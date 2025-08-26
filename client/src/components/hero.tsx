@@ -1,22 +1,7 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Code, Sparkles } from "lucide-react";
 
 export default function Hero() {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const fullText = "Computer Science Student passionate about Machine Learning, Full-Stack Development & Cloud Technologies";
-
-  useEffect(() => {
-    if (currentIndex < fullText.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + fullText[currentIndex]);
-        setCurrentIndex(currentIndex + 1);
-      }, 50);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, fullText]);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -50,26 +35,26 @@ export default function Hero() {
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left animate-slide-in-left">
             <div className="mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 mb-6">
                 <Sparkles className="h-4 w-4 text-blue-600" />
-                <span className="text-sm font-medium text-blue-800">Available for opportunities</span>
+                <span className="text-sm font-medium text-blue-800">Available for new opportunities</span>
               </div>
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-8 leading-tight">
-              Hi, I'm{" "}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               <span className="gradient-text relative">
-                Darshan
+                Borimalla Darshan Kumar
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-25 animate-pulse"></div>
               </span>
             </h1>
             
-            <div className="h-16 mb-8">
-              <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed">
-                {displayText}
-                <span className="typing-animation"></span>
-              </p>
-            </div>
+            <h2 className="text-xl sm:text-2xl font-semibold text-blue-600 mb-8">
+              Computer Science Student | Full-Stack & ML Developer  
+            </h2>
+            
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mb-10">
+              Driven Computer Science undergraduate with expertise in machine learning, full-stack development, and cloud technologies. Proven track record of building scalable solutions.
+            </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
               <Button
