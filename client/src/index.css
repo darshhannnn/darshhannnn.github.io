@@ -204,6 +204,16 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
+
+  /* Custom cursor styles */
+  * {
+    cursor: none !important;
+  }
+  
+  /* Allow pointer cursor for interactive elements but still hide default */
+  button, a, input, textarea, select {
+    cursor: none !important;
+  }
 }
 
 @keyframes fadeInUp {
