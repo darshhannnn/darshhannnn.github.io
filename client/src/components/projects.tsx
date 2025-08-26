@@ -77,24 +77,25 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+    <section id="projects" className="py-24 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-200/30 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900 to-slate-900"></div>
+      <div className="absolute top-20 left-10 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl floating-animation"></div>
+      <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl floating-animation" style={{animationDelay: '2s'}}></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 mb-6 animate-bounce-in">
-            <Star className="h-4 w-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-800">Featured Work</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-400/30 mb-6 animate-bounce-in">
+            <Star className="h-4 w-4 text-blue-400" />
+            <span className="text-sm font-medium text-blue-200">Featured Work</span>
           </div>
           
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 animate-fade-in-up">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in-up">
             Featured{" "}
-            <span className="gradient-text">Projects</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Projects</span>
           </h2>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             A showcase of innovative solutions spanning AI/ML, web development, and research projects
           </p>
         </div>
@@ -103,8 +104,8 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`project-card group bg-white rounded-2xl shadow-lg overflow-hidden animate-scale-in ${
-                project.featured ? 'ring-2 ring-blue-200' : ''
+              className={`project-card group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-lg overflow-hidden animate-scale-in transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 hover:border-blue-400/30 hover:bg-slate-800/70 ${
+                project.featured ? 'ring-2 ring-blue-400/30' : ''
               }`}
               style={{animationDelay: `${index * 0.1}s`}}
               data-testid={`card-project-${project.id}`}
@@ -113,7 +114,7 @@ export default function Projects() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110 opacity-90"
                   data-testid={`img-project-${project.id}`}
                 />
                 <div className="project-overlay absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-600/90 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
@@ -124,23 +125,23 @@ export default function Projects() {
                 </div>
                 
                 {project.featured && (
-                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 shadow-lg">
                     <Star className="h-3 w-3" />
                     Featured
                   </div>
                 )}
                 
-                <div className="absolute top-4 right-4 glass-effect text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 border border-slate-700/50">
                   <Calendar className="h-3 w-3" />
                   {project.date}
                 </div>
               </div>
               
               <div className="p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors" data-testid={`text-project-title-${project.id}`}>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors" data-testid={`text-project-title-${project.id}`}>
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed" data-testid={`text-project-description-${project.id}`}>
+                <p className="text-gray-400 mb-6 text-sm leading-relaxed" data-testid={`text-project-description-${project.id}`}>
                   {project.description}
                 </p>
                 
@@ -149,7 +150,7 @@ export default function Projects() {
                     <Badge
                       key={tagIndex}
                       variant="secondary"
-                      className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 hover:from-blue-100 hover:to-purple-100 text-xs px-3 py-1 transform hover:scale-105 transition-all duration-200"
+                      className="bg-slate-700/50 backdrop-blur-sm text-blue-300 hover:bg-slate-600/50 hover:text-blue-200 text-xs px-3 py-1 transform hover:scale-105 transition-all duration-200 border border-slate-600/50"
                       data-testid={`badge-tag-${project.id}-${tagIndex}`}
                     >
                       {tag}
@@ -160,7 +161,7 @@ export default function Projects() {
                 <div className="flex justify-between items-center">
                   <a
                     href={project.liveUrl}
-                    className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 text-sm flex items-center gap-1 group/link"
+                    className="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-200 text-sm flex items-center gap-1 group/link"
                     data-testid={`link-demo-${project.id}`}
                   >
                     <ExternalLink className="h-4 w-4 group-hover/link:rotate-12 transition-transform" />
@@ -168,7 +169,7 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.githubUrl}
-                    className="text-slate-600 hover:text-slate-800 font-semibold transition-colors duration-200 flex items-center gap-1 text-sm group/link"
+                    className="text-gray-400 hover:text-white font-semibold transition-colors duration-200 flex items-center gap-1 text-sm group/link"
                     data-testid={`link-github-${project.id}`}
                   >
                     <Github className="h-4 w-4 group-hover/link:scale-110 transition-transform" />
@@ -184,7 +185,7 @@ export default function Projects() {
           <Button
             onClick={handleViewAllProjects}
             variant="outline"
-            className="group border-2 border-blue-300 hover:border-blue-600 text-blue-600 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+            className="group border-2 border-blue-400/30 hover:border-blue-400/60 text-blue-400 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 backdrop-blur-sm bg-slate-800/30"
             data-testid="button-view-all-projects"
           >
             <ArrowRight className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" />
