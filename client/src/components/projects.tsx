@@ -1,4 +1,4 @@
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Star, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -10,7 +10,9 @@ const projects = [
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
     tags: ["FastAPI", "Streamlit", "Gemini AI", "LLM"],
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "#",
+    featured: true,
+    date: "July 2025"
   },
   {
     id: 2,
@@ -19,7 +21,9 @@ const projects = [
     image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
     tags: ["Google Earth Engine", "Vertex AI", "BigQuery", "Python"],
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "#",
+    featured: true,
+    date: "Apr-Jun 2025"
   },
   {
     id: 3,
@@ -28,7 +32,9 @@ const projects = [
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
     tags: ["TensorFlow", "Keras", "CNN", "Cybersecurity"],
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "#",
+    featured: true,
+    date: "Feb-Jul 2025"
   },
   {
     id: 4,
@@ -37,7 +43,9 @@ const projects = [
     image: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
     tags: ["React.js", "Tailwind CSS", "REST API", "Real-time"],
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "#",
+    featured: false,
+    date: "Mar-Jun 2025"
   },
   {
     id: 5,
@@ -46,7 +54,9 @@ const projects = [
     image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
     tags: ["Python", "NetworkX", "Genetic Algorithms", "Graph Theory"],
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "#",
+    featured: false,
+    date: "Feb-Jul 2025"
   },
   {
     id: 6,
@@ -55,7 +65,9 @@ const projects = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
     tags: ["JavaScript", "WebExtensions", "Firefox", "Open Source"],
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "#",
+    featured: false,
+    date: "Ongoing"
   }
 ];
 
@@ -65,65 +77,101 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-16">
-          Featured Projects
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+    <section id="projects" className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200/30 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-200/30 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 mb-6 animate-bounce-in">
+            <Star className="h-4 w-4 text-blue-600" />
+            <span className="text-sm font-medium text-blue-800">Featured Work</span>
+          </div>
+          
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 animate-fade-in-up">
+            Featured{" "}
+            <span className="gradient-text">Projects</span>
+          </h2>
+          
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            A showcase of innovative solutions spanning AI/ML, web development, and research projects
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className={`project-card group bg-white rounded-2xl shadow-lg overflow-hidden animate-scale-in ${
+                project.featured ? 'ring-2 ring-blue-200' : ''
+              }`}
+              style={{animationDelay: `${index * 0.1}s`}}
               data-testid={`card-project-${project.id}`}
             >
-              <div className="relative group">
+              <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110"
                   data-testid={`img-project-${project.id}`}
                 />
-                <div className="project-overlay absolute inset-0 bg-blue-600/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <ExternalLink className="h-8 w-8 mx-auto mb-2" />
-                    <p className="font-semibold">View Project</p>
+                <div className="project-overlay absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-600/90 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                  <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <ExternalLink className="h-10 w-10 mx-auto mb-3" />
+                    <p className="font-semibold text-lg">View Project</p>
                   </div>
                 </div>
+                
+                {project.featured && (
+                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                    <Star className="h-3 w-3" />
+                    Featured
+                  </div>
+                )}
+                
+                <div className="absolute top-4 right-4 glass-effect text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                  <Calendar className="h-3 w-3" />
+                  {project.date}
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2" data-testid={`text-project-title-${project.id}`}>
+              
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors" data-testid={`text-project-title-${project.id}`}>
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 text-sm" data-testid={`text-project-description-${project.id}`}>
+                <p className="text-gray-600 mb-6 text-sm leading-relaxed" data-testid={`text-project-description-${project.id}`}>
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, index) => (
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag, tagIndex) => (
                     <Badge
-                      key={index}
+                      key={tagIndex}
                       variant="secondary"
-                      className="bg-blue-100 text-blue-800 hover:bg-blue-200 text-xs"
-                      data-testid={`badge-tag-${project.id}-${index}`}
+                      className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 hover:from-blue-100 hover:to-purple-100 text-xs px-3 py-1 transform hover:scale-105 transition-all duration-200"
+                      data-testid={`badge-tag-${project.id}-${tagIndex}`}
                     >
                       {tag}
                     </Badge>
                   ))}
                 </div>
-                <div className="flex gap-4">
+                
+                <div className="flex justify-between items-center">
                   <a
                     href={project.liveUrl}
-                    className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 text-sm"
+                    className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 text-sm flex items-center gap-1 group/link"
                     data-testid={`link-demo-${project.id}`}
                   >
+                    <ExternalLink className="h-4 w-4 group-hover/link:rotate-12 transition-transform" />
                     Live Demo
                   </a>
                   <a
                     href={project.githubUrl}
-                    className="text-slate-600 hover:text-slate-800 font-semibold transition-colors duration-200 flex items-center gap-1 text-sm"
+                    className="text-slate-600 hover:text-slate-800 font-semibold transition-colors duration-200 flex items-center gap-1 text-sm group/link"
                     data-testid={`link-github-${project.id}`}
                   >
-                    <Github className="h-4 w-4" />
+                    <Github className="h-4 w-4 group-hover/link:scale-110 transition-transform" />
                     GitHub
                   </a>
                 </div>
@@ -132,14 +180,14 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center">
           <Button
             onClick={handleViewAllProjects}
             variant="outline"
-            className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-200"
+            className="group border-2 border-blue-300 hover:border-blue-600 text-blue-600 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
             data-testid="button-view-all-projects"
           >
-            <ArrowRight className="h-4 w-4 mr-2" />
+            <ArrowRight className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" />
             View All Projects
           </Button>
         </div>

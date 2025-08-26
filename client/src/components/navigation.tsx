@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
@@ -33,26 +33,36 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm"
-          : "bg-white/95 backdrop-blur-sm"
+          ? "nav-blur shadow-lg"
+          : "bg-white/80 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="text-xl font-bold text-slate-900">Darshan Kumar</div>
+          {/* Logo */}
+          <div className="flex items-center gap-2 group cursor-pointer" onClick={() => scrollToSection("home")}>
+            <div className="relative">
+              <Sparkles className="h-8 w-8 text-blue-600 group-hover:rotate-12 transition-transform duration-300" />
+              <div className="absolute inset-0 bg-blue-600 rounded-full blur-md opacity-30 group-hover:opacity-50 transition-opacity"></div>
+            </div>
+            <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Darshan Kumar
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                className="relative text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium group py-2"
                 data-testid={`nav-link-${link.id}`}
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
           </div>
@@ -61,31 +71,41 @@ export default function Navigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden relative overflow-hidden group"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             data-testid="mobile-menu-toggle"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <div className="relative z-10">
+              {isMenuOpen ? (
+                <X className="h-6 w-6 transform rotate-180 transition-transform duration-300" />
+              ) : (
+                <Menu className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+              )}
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col space-y-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 text-left"
-                  data-testid={`mobile-nav-link-${link.id}`}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? "max-h-64 pb-4" : "max-h-0"
+          }`}
+        >
+          <div className="flex flex-col space-y-2 pt-2">
+            {navLinks.map((link, index) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-medium py-3 px-4 text-left rounded-lg transform hover:translate-x-2"
+                style={{ animationDelay: `${index * 50}ms` }}
+                data-testid={`mobile-nav-link-${link.id}`}
+              >
+                {link.label}
+              </button>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
