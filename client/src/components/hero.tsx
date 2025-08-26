@@ -17,10 +17,10 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center lg:text-left animate-fade-in-up">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Hi, I'm <span className="text-blue-600">Alex</span>
+              Hi, I'm <span className="text-blue-600">Darshan</span>
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 mb-8 leading-relaxed">
-              Full Stack Developer crafting beautiful and functional web experiences
+              Computer Science Student passionate about Machine Learning, Full-Stack Development & Cloud Technologies
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
           <div className="flex-shrink-0 animate-fade-in">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
               alt="Professional headshot"
               className="w-80 h-80 rounded-full object-cover shadow-2xl border-8 border-white"
               data-testid="img-profile"

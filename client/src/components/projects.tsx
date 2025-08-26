@@ -5,37 +5,55 @@ import { Badge } from "@/components/ui/badge";
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
-    tags: ["React", "Node.js", "MongoDB"],
+    title: "Parsely AI",
+    description: "Gemini-powered document processing platform using LLMs for intelligent claim evaluation and semantic search across unstructured documents like contracts and policies. Built with FastAPI backend, Streamlit frontend, delivering 90% cost savings over traditional AI solutions.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
+    tags: ["FastAPI", "Streamlit", "Gemini AI", "LLM"],
     liveUrl: "#",
     githubUrl: "#"
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A collaborative project management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
-    tags: ["React", "Redux", "Socket.io"],
+    title: "AI-Enhanced Forest Monitoring",
+    description: "Cloud-based real-time monitoring system using Google Earth Engine, Vertex AI, and BigQuery. Deployed anomaly detection algorithms for deforestation pattern identification with sub-minute latency alerts.",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
+    tags: ["Google Earth Engine", "Vertex AI", "BigQuery", "Python"],
     liveUrl: "#",
     githubUrl: "#"
   },
   {
     id: 3,
-    title: "Weather Forecast App",
-    description: "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics using modern APIs.",
-    image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
-    tags: ["React", "TypeScript", "APIs"],
+    title: "Interpretable Malware Detection",
+    description: "Self-attention-augmented 1D CNN using TensorFlow and Keras achieving 92% accuracy in Android malware detection. Modeled long-range opcode dependencies with explainable AI techniques. Published at ICCCNT 2025, IIT Indore.",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
+    tags: ["TensorFlow", "Keras", "CNN", "Cybersecurity"],
     liveUrl: "#",
     githubUrl: "#"
   },
   {
     id: 4,
-    title: "Social Media Dashboard",
-    description: "A comprehensive social media management platform with analytics, scheduling, and multi-platform integration capabilities.",
+    title: "Live Cricket Score Management",
+    description: "Responsive full-stack web application for managing live cricket scores using React.js, Tailwind CSS, and REST APIs. Features auto-refreshing system for real-time updates and winning probability prediction models.",
+    image: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
+    tags: ["React.js", "Tailwind CSS", "REST API", "Real-time"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    id: 5,
+    title: "Behavior-Aware Influence Maximization",
+    description: "Graph-based system using Python, NetworkX, and Genetic Algorithms to maximize user influence on Instagram. Incorporated behavioral insights on 70K-user dataset, outperforming traditional influence models in engagement.",
+    image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
+    tags: ["Python", "NetworkX", "Genetic Algorithms", "Graph Theory"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    id: 6,
+    title: "Firefox Custom Adblocker",
+    description: "Browser extension for Firefox using JavaScript and WebExtensions API for custom ad blocking. Contributing to open-source development on GitHub to enhance privacy and browsing experience.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
-    tags: ["Vue.js", "Express", "PostgreSQL"],
+    tags: ["JavaScript", "WebExtensions", "Firefox", "Open Source"],
     liveUrl: "#",
     githubUrl: "#"
   }
@@ -52,7 +70,7 @@ export default function Projects() {
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-16">
           Featured Projects
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
               key={project.id}
@@ -77,7 +95,7 @@ export default function Projects() {
                 <h3 className="text-xl font-bold text-slate-900 mb-2" data-testid={`text-project-title-${project.id}`}>
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4" data-testid={`text-project-description-${project.id}`}>
+                <p className="text-gray-600 mb-4 text-sm" data-testid={`text-project-description-${project.id}`}>
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -85,7 +103,7 @@ export default function Projects() {
                     <Badge
                       key={index}
                       variant="secondary"
-                      className="bg-blue-100 text-blue-800 hover:bg-blue-200"
+                      className="bg-blue-100 text-blue-800 hover:bg-blue-200 text-xs"
                       data-testid={`badge-tag-${project.id}-${index}`}
                     >
                       {tag}
@@ -95,14 +113,14 @@ export default function Projects() {
                 <div className="flex gap-4">
                   <a
                     href={project.liveUrl}
-                    className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200"
+                    className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 text-sm"
                     data-testid={`link-demo-${project.id}`}
                   >
                     Live Demo
                   </a>
                   <a
                     href={project.githubUrl}
-                    className="text-slate-600 hover:text-slate-800 font-semibold transition-colors duration-200 flex items-center gap-1"
+                    className="text-slate-600 hover:text-slate-800 font-semibold transition-colors duration-200 flex items-center gap-1 text-sm"
                     data-testid={`link-github-${project.id}`}
                   >
                     <Github className="h-4 w-4" />

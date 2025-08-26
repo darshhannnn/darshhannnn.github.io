@@ -17,19 +17,19 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of experience creating digital solutions that matter. I specialize in React, Node.js, and modern web technologies, always striving to write clean, maintainable code.
+                I'm a driven Computer Science undergraduate at Amrita Vishwa Vidyapeetham with expertise in machine learning, full-stack development and cloud technologies. Currently maintaining a CGPA of 7.61/10.0 and passionate about building scalable solutions that solve real-world problems.
               </p>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                My journey in tech began with a curiosity about how things work behind the scenes. Today, I help businesses transform their ideas into powerful web applications that engage users and drive results.
+                My journey spans from developing AI-enhanced cloud monitoring systems to creating interpretable malware detection models. I've completed internships at Bluestock, published research at ICCCNT 2025, and actively contribute to open-source projects. I believe in innovation through collaborative problem-solving.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-blue-600" />
-                  <span className="text-gray-700">San Francisco, CA</span>
+                  <span className="text-gray-700">India</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5 text-blue-600" />
-                  <span className="text-gray-700">Available for freelance</span>
+                  <span className="text-gray-700">Open to opportunities</span>
                 </div>
               </div>
               <Button

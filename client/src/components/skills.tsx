@@ -1,62 +1,82 @@
-import { Code, Server, Smartphone } from "lucide-react";
+import { Code, Server, Brain } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const skillCategories = [
   {
     icon: Code,
-    title: "Frontend Development",
-    description: "Creating responsive, interactive user interfaces with modern frameworks and tools.",
+    title: "Full-Stack Development",
+    description: "Building end-to-end applications with modern frameworks and responsive design principles.",
     bgColor: "bg-blue-100",
     iconColor: "text-blue-600"
   },
   {
-    icon: Server,
-    title: "Backend Development", 
-    description: "Building robust APIs, databases, and server-side applications with scalable architecture.",
-    bgColor: "bg-green-100",
-    iconColor: "text-green-600"
+    icon: Brain,
+    title: "Machine Learning & AI", 
+    description: "Developing intelligent systems with deep learning, computer vision, and predictive modeling.",
+    bgColor: "bg-purple-100",
+    iconColor: "text-purple-600"
   },
   {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "Developing cross-platform mobile applications with React Native and progressive web apps.",
-    bgColor: "bg-purple-100", 
-    iconColor: "text-purple-600"
+    icon: Server,
+    title: "Cloud & DevOps",
+    description: "Deploying scalable solutions on cloud platforms with modern infrastructure and tools.",
+    bgColor: "bg-green-100",
+    iconColor: "text-green-600"
   }
 ];
 
 const skillSections = [
   {
-    title: "Languages & Frameworks",
+    title: "Programming Languages",
     skills: [
-      { name: "JavaScript", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
-      { name: "TypeScript", color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200" },
-      { name: "React", color: "bg-cyan-100 text-cyan-800 hover:bg-cyan-200" },
-      { name: "Node.js", color: "bg-green-100 text-green-800 hover:bg-green-200" },
-      { name: "Vue.js", color: "bg-emerald-100 text-emerald-800 hover:bg-emerald-200" },
       { name: "Python", color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200" },
-      { name: "Express.js", color: "bg-red-100 text-red-800 hover:bg-red-200" }
+      { name: "JavaScript", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Java", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "C++", color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200" },
+      { name: "C", color: "bg-gray-100 text-gray-800 hover:bg-gray-200" }
     ]
   },
   {
-    title: "Databases & Tools",
+    title: "Web Development",
     skills: [
-      { name: "MongoDB", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
-      { name: "PostgreSQL", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
-      { name: "Git", color: "bg-gray-100 text-gray-800 hover:bg-gray-200" },
-      { name: "Docker", color: "bg-purple-100 text-purple-800 hover:bg-purple-200" },
-      { name: "AWS", color: "bg-pink-100 text-pink-800 hover:bg-pink-200" },
-      { name: "Redis", color: "bg-teal-100 text-teal-800 hover:bg-teal-200" }
+      { name: "React.js", color: "bg-cyan-100 text-cyan-800 hover:bg-cyan-200" },
+      { name: "Node.js", color: "bg-green-100 text-green-800 hover:bg-green-200" },
+      { name: "HTML5", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
+      { name: "CSS3", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Tailwind CSS", color: "bg-teal-100 text-teal-800 hover:bg-teal-200" }
     ]
   },
   {
-    title: "Design & Testing",
+    title: "Machine Learning & AI",
     skills: [
-      { name: "Figma", color: "bg-violet-100 text-violet-800 hover:bg-violet-200" },
-      { name: "Tailwind CSS", color: "bg-rose-100 text-rose-800 hover:bg-rose-200" },
-      { name: "Jest", color: "bg-lime-100 text-lime-800 hover:bg-lime-200" },
-      { name: "Cypress", color: "bg-amber-100 text-amber-800 hover:bg-amber-200" },
-      { name: "Webpack", color: "bg-sky-100 text-sky-800 hover:bg-sky-200" }
+      { name: "TensorFlow", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
+      { name: "Keras", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "Scikit-learn", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Pandas", color: "bg-purple-100 text-purple-800 hover:bg-purple-200" },
+      { name: "NumPy", color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200" },
+      { name: "Deep Learning", color: "bg-pink-100 text-pink-800 hover:bg-pink-200" }
+    ]
+  },
+  {
+    title: "Databases & Cloud",
+    skills: [
+      { name: "MongoDB", color: "bg-green-100 text-green-800 hover:bg-green-200" },
+      { name: "SQL", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Google Cloud Platform", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "Vertex AI", color: "bg-purple-100 text-purple-800 hover:bg-purple-200" },
+      { name: "BigQuery", color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200" },
+      { name: "Netlify", color: "bg-teal-100 text-teal-800 hover:bg-teal-200" }
+    ]
+  },
+  {
+    title: "Tools & Technologies",
+    skills: [
+      { name: "Git", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
+      { name: "Linux", color: "bg-gray-100 text-gray-800 hover:bg-gray-200" },
+      { name: "AutoCAD", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "FastAPI", color: "bg-green-100 text-green-800 hover:bg-green-200" },
+      { name: "Streamlit", color: "bg-pink-100 text-pink-800 hover:bg-pink-200" },
+      { name: "NetworkX", color: "bg-purple-100 text-purple-800 hover:bg-purple-200" }
     ]
   }
 ];
@@ -65,7 +85,7 @@ export default function Skills() {
   return (
     <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center mb-16">
             Skills & Technologies
           </h2>

@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p data-testid="text-copyright">
-              &copy; 2024 Alex Johnson. All rights reserved.
+              &copy; 2024 Borimalla Darshan Kumar. All rights reserved.
             </p>
           </div>
           <div className="flex gap-6">

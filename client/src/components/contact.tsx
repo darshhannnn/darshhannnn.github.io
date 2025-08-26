@@ -71,26 +71,26 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "alex@example.com",
-      href: "mailto:alex@example.com"
+      value: "darshanborimalla@gmail.com",
+      href: "mailto:darshanborimalla@gmail.com"
     },
     {
       icon: Phone,
       label: "Phone", 
-      value: "+1 (234) 567-8900",
-      href: "tel:+1234567890"
+      value: "+91 95501 35476",
+      href: "tel:+919550135476"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
+      value: "India",
       href: null
     }
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn", bgColor: "bg-blue-600 hover:bg-blue-700" },
-    { icon: Github, href: "#", label: "GitHub", bgColor: "bg-gray-700 hover:bg-gray-600" },
+    { icon: Linkedin, href: "https://linkedin.com/in/darshan-borimalla", label: "LinkedIn", bgColor: "bg-blue-600 hover:bg-blue-700" },
+    { icon: Github, href: "https://github.com/darshhannnn", label: "GitHub", bgColor: "bg-gray-700 hover:bg-gray-600" },
     { icon: Twitter, href: "#", label: "Twitter", bgColor: "bg-blue-400 hover:bg-blue-500" }
   ];
 
