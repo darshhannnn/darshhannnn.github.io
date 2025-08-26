@@ -1,6 +1,5 @@
 import { Code, Server, Brain, Zap, Target, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useState, useEffect } from "react";
 
 const skillCategories = [
   {
@@ -8,24 +7,21 @@ const skillCategories = [
     title: "Full-Stack Development",
     description: "Building end-to-end applications with modern frameworks and responsive design principles.",
     bgColor: "bg-blue-100",
-    iconColor: "text-blue-600",
-    progress: 85
+    iconColor: "text-blue-600"
   },
   {
     icon: Brain,
     title: "Machine Learning & AI", 
     description: "Developing intelligent systems with deep learning, computer vision, and predictive modeling.",
     bgColor: "bg-purple-100",
-    iconColor: "text-purple-600",
-    progress: 90
+    iconColor: "text-purple-600"
   },
   {
     icon: Server,
     title: "Cloud & DevOps",
     description: "Deploying scalable solutions on cloud platforms with modern infrastructure and tools.",
     bgColor: "bg-green-100",
-    iconColor: "text-green-600",
-    progress: 75
+    iconColor: "text-green-600"
   }
 ];
 
@@ -34,81 +30,61 @@ const skillSections = [
     title: "Programming Languages",
     icon: Code,
     skills: [
-      { name: "Python", color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200", level: 90 },
-      { name: "JavaScript", color: "bg-blue-100 text-blue-800 hover:bg-blue-200", level: 85 },
-      { name: "Java", color: "bg-red-100 text-red-800 hover:bg-red-200", level: 80 },
-      { name: "C++", color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200", level: 75 },
-      { name: "C", color: "bg-gray-100 text-gray-800 hover:bg-gray-200", level: 70 }
+      { name: "Python", color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200" },
+      { name: "JavaScript", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Java", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "C++", color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200" },
+      { name: "C", color: "bg-gray-100 text-gray-800 hover:bg-gray-200" }
     ]
   },
   {
     title: "Web Development",
     icon: Zap,
     skills: [
-      { name: "React.js", color: "bg-cyan-100 text-cyan-800 hover:bg-cyan-200", level: 85 },
-      { name: "Node.js", color: "bg-green-100 text-green-800 hover:bg-green-200", level: 80 },
-      { name: "HTML5", color: "bg-orange-100 text-orange-800 hover:bg-orange-200", level: 90 },
-      { name: "CSS3", color: "bg-blue-100 text-blue-800 hover:bg-blue-200", level: 85 },
-      { name: "Tailwind CSS", color: "bg-teal-100 text-teal-800 hover:bg-teal-200", level: 85 }
+      { name: "React.js", color: "bg-cyan-100 text-cyan-800 hover:bg-cyan-200" },
+      { name: "Node.js", color: "bg-green-100 text-green-800 hover:bg-green-200" },
+      { name: "HTML5", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
+      { name: "CSS3", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Tailwind CSS", color: "bg-teal-100 text-teal-800 hover:bg-teal-200" }
     ]
   },
   {
     title: "Machine Learning & AI",
     icon: Brain,
     skills: [
-      { name: "TensorFlow", color: "bg-orange-100 text-orange-800 hover:bg-orange-200", level: 85 },
-      { name: "Keras", color: "bg-red-100 text-red-800 hover:bg-red-200", level: 80 },
-      { name: "Scikit-learn", color: "bg-blue-100 text-blue-800 hover:bg-blue-200", level: 85 },
-      { name: "Pandas", color: "bg-purple-100 text-purple-800 hover:bg-purple-200", level: 90 },
-      { name: "NumPy", color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200", level: 85 },
-      { name: "Deep Learning", color: "bg-pink-100 text-pink-800 hover:bg-pink-200", level: 80 }
+      { name: "TensorFlow", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
+      { name: "Keras", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "Scikit-learn", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Pandas", color: "bg-purple-100 text-purple-800 hover:bg-purple-200" },
+      { name: "NumPy", color: "bg-indigo-100 text-indigo-800 hover:bg-indigo-200" },
+      { name: "Deep Learning", color: "bg-pink-100 text-pink-800 hover:bg-pink-200" }
     ]
   },
   {
     title: "Databases & Cloud",
     icon: Server,
     skills: [
-      { name: "MongoDB", color: "bg-green-100 text-green-800 hover:bg-green-200", level: 80 },
-      { name: "SQL", color: "bg-blue-100 text-blue-800 hover:bg-blue-200", level: 85 },
-      { name: "Google Cloud Platform", color: "bg-red-100 text-red-800 hover:bg-red-200", level: 75 },
-      { name: "Vertex AI", color: "bg-purple-100 text-purple-800 hover:bg-purple-200", level: 70 },
-      { name: "BigQuery", color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200", level: 75 },
-      { name: "Netlify", color: "bg-teal-100 text-teal-800 hover:bg-teal-200", level: 85 }
+      { name: "MongoDB", color: "bg-green-100 text-green-800 hover:bg-green-200" },
+      { name: "SQL", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+      { name: "Google Cloud Platform", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "Vertex AI", color: "bg-purple-100 text-purple-800 hover:bg-purple-200" },
+      { name: "BigQuery", color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200" },
+      { name: "Netlify", color: "bg-teal-100 text-teal-800 hover:bg-teal-200" }
     ]
   },
   {
     title: "Tools & Technologies",
     icon: Target,
     skills: [
-      { name: "Git", color: "bg-orange-100 text-orange-800 hover:bg-orange-200", level: 90 },
-      { name: "Linux", color: "bg-gray-100 text-gray-800 hover:bg-gray-200", level: 80 },
-      { name: "AutoCAD", color: "bg-red-100 text-red-800 hover:bg-red-200", level: 60 },
-      { name: "FastAPI", color: "bg-green-100 text-green-800 hover:bg-green-200", level: 75 },
-      { name: "Streamlit", color: "bg-pink-100 text-pink-800 hover:bg-pink-200", level: 80 },
-      { name: "NetworkX", color: "bg-purple-100 text-purple-800 hover:bg-purple-200", level: 75 }
+      { name: "Git", color: "bg-orange-100 text-orange-800 hover:bg-orange-200" },
+      { name: "Linux", color: "bg-gray-100 text-gray-800 hover:bg-gray-200" },
+      { name: "AutoCAD", color: "bg-red-100 text-red-800 hover:bg-red-200" },
+      { name: "FastAPI", color: "bg-green-100 text-green-800 hover:bg-green-200" },
+      { name: "Streamlit", color: "bg-pink-100 text-pink-800 hover:bg-pink-200" },
+      { name: "NetworkX", color: "bg-purple-100 text-purple-800 hover:bg-purple-200" }
     ]
   }
 ];
-
-function AnimatedProgressBar({ progress, delay = 0 }: { progress: number, delay?: number }) {
-  const [animatedProgress, setAnimatedProgress] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimatedProgress(progress);
-    }, delay);
-    return () => clearTimeout(timer);
-  }, [progress, delay]);
-
-  return (
-    <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-      <div 
-        className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 ease-out"
-        style={{ width: `${animatedProgress}%` }}
-      />
-    </div>
-  );
-}
 
 export default function Skills() {
   return (
@@ -153,18 +129,9 @@ export default function Skills() {
                   <h3 className="text-xl font-semibold text-slate-900 mb-4" data-testid={`text-skill-category-${index}`}>
                     {category.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed" data-testid={`text-skill-description-${index}`}>
+                  <p className="text-gray-600 leading-relaxed" data-testid={`text-skill-description-${index}`}>
                     {category.description}
                   </p>
-                  
-                  {/* Progress Bar */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm text-gray-600">
-                      <span>Proficiency</span>
-                      <span>{category.progress}%</span>
-                    </div>
-                    <AnimatedProgressBar progress={category.progress} delay={index * 200 + 500} />
-                  </div>
                 </div>
               );
             })}
@@ -185,23 +152,15 @@ export default function Skills() {
                     </h4>
                   </div>
                   
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="flex flex-wrap gap-4">
                     {section.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="group">
-                        <div className="flex items-center justify-between mb-2">
-                          <Badge
-                            className={`skill-badge px-4 py-2 rounded-xl font-medium transition-all duration-300 cursor-pointer transform ${skill.color}`}
-                            data-testid={`badge-skill-${sectionIndex}-${skillIndex}`}
-                          >
-                            {skill.name}
-                          </Badge>
-                          <span className="text-sm text-gray-500 font-medium">{skill.level}%</span>
-                        </div>
-                        <AnimatedProgressBar 
-                          progress={skill.level} 
-                          delay={sectionIndex * 100 + skillIndex * 50 + 800} 
-                        />
-                      </div>
+                      <Badge
+                        key={skillIndex}
+                        className={`skill-badge px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 cursor-pointer transform ${skill.color}`}
+                        data-testid={`badge-skill-${sectionIndex}-${skillIndex}`}
+                      >
+                        {skill.name}
+                      </Badge>
                     ))}
                   </div>
                 </div>
