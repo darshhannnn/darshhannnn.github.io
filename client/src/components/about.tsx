@@ -3,8 +3,12 @@ import { Button } from "@/components/ui/button";
 
 export default function About() {
   const handleDownloadResume = () => {
-    // In a real implementation, this would trigger a download
-    console.log("Download resume clicked");
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Darshan_Borimalla_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const stats = [

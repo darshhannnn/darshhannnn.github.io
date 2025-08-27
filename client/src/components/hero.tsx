@@ -10,7 +10,12 @@ export default function Hero() {
   };
 
   const handleDownloadResume = () => {
-    console.log("Download resume clicked");
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Darshan_Borimalla_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
