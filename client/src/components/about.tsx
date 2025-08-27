@@ -13,7 +13,6 @@ export default function About() {
 
   const stats = [
     { label: "Projects Completed", value: "15+", icon: Award },
-    { label: "CGPA", value: "7.61", icon: GraduationCap },
     { label: "Research Papers", value: "1", icon: Users },
   ];
 

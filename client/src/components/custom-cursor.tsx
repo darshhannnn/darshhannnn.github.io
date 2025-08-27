@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [trailPosition, setTrailPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const animationRef = useRef<number>();
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
@@ -19,26 +20,44 @@ export default function CustomCursor() {
       setIsVisible(true);
     };
 
-    // Smooth trailing effect
-    const updateTrailPosition = () => {
-      setTrailPosition(prev => ({
-        x: prev.x + (mousePosition.x - prev.x) * 0.1,
-        y: prev.y + (mousePosition.y - prev.y) * 0.1
-      }));
-    };
-
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('mouseenter', handleMouseEnter);
-
-    // Animation frame for smooth trailing
-    const animationFrame = setInterval(updateTrailPosition, 16);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('mouseenter', handleMouseEnter);
-      clearInterval(animationFrame);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Smooth trailing effect using requestAnimationFrame
+    const updateTrailPosition = () => {
+      setTrailPosition(prev => {
+        const dx = mousePosition.x - prev.x;
+        const dy = mousePosition.y - prev.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 0.1) {
+          return prev;
+        }
+        
+        return {
+          x: prev.x + dx * 0.15,
+          y: prev.y + dy * 0.15
+        };
+      });
+      
+      animationRef.current = requestAnimationFrame(updateTrailPosition);
+    };
+
+    animationRef.current = requestAnimationFrame(updateTrailPosition);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, [mousePosition]);
 
