@@ -26,7 +26,7 @@ export default function About() {
     {
       icon: Briefcase,
       title: "Experience",
-      description: "Full Stack Development Internship (May-Jun 2025)",
+      description: "Full Stack Development Internship (May-July 2025)",
       color: "bg-purple-600/20 text-purple-300"
     },
     {
