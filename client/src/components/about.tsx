@@ -26,7 +26,7 @@ export default function About() {
     {
       icon: Briefcase,
       title: "Experience",
-      description: "Full Stack Development Internship at Bluestock (May-Jun 2025)",
+      description: "Full Stack Development Internship (May-Jun 2025)",
       color: "bg-purple-600/20 text-purple-300"
     },
     {
@@ -74,7 +74,7 @@ export default function About() {
                 </p>
                 
                 <p>
-                  I've completed internships at Bluestock, published research at ICCCNT 2025, and actively contribute to open-source projects. I believe in innovation through collaborative problem-solving and am always eager to learn new technologies.
+                  I've completed internships, published research at ICCCNT 2025, and actively contribute to open-source projects. I believe in innovation through collaborative problem-solving and am always eager to learn new technologies.
                 </p>
               </div>
 
