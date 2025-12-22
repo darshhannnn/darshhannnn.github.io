@@ -5,17 +5,28 @@ import { Badge } from "@/components/ui/badge";
 const projects = [
   {
     id: 1,
-    title: "Parsely AI",
-    description: "Gemini-powered document processing platform using LLMs for intelligent claim evaluation and semantic search across unstructured documents like contracts and policies. Built with FastAPI backend, Streamlit frontend, delivering 90% cost savings over traditional AI solutions.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
-    tags: ["FastAPI", "Streamlit", "Gemini AI", "LLM"],
-    liveUrl: "https://parsely-ai-demo.streamlit.app",
-    githubUrl: "https://github.com/darshhannnn/parsely-ai",
+    title: "Industrial Control System Malware Detection",
+    description: "Building a hybrid SARIMA–LSTM anomaly detection framework to identify Stuxnet-style malware using real-time sensor data instead of network traffic. Validated against SWaT and ICS-Flow datasets with a goal of ≥95% accuracy.",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
+    tags: ["SARIMA", "LSTM", "Anomaly Detection", "Cybersecurity", "Time Series"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/darshhannnn/ics-malware-detection",
     featured: true,
-    date: "July 2025"
+    date: "2025 – Ongoing"
   },
   {
     id: 2,
+    title: "Student.dev",
+    description: "Complete student life management Android application built in Kotlin. Integrates attendance tracking, PDF viewer, notes, habit tracker, and budget manager with SQLite storage. Features offline-first architecture for seamless user experience.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
+    tags: ["Kotlin", "Android", "SQLite", "Offline-First", "Mobile App"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/darshhannnn/student-dev",
+    featured: true,
+    date: "2025"
+  },
+  {
+    id: 3,
     title: "AI-Enhanced Forest Monitoring",
     description: "Cloud-based real-time monitoring system using Google Earth Engine, Vertex AI, and BigQuery. Deployed anomaly detection algorithms for deforestation pattern identification with sub-minute latency alerts.",
     image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
@@ -26,7 +37,7 @@ const projects = [
     date: "Apr-Jun 2025"
   },
   {
-    id: 3,
+    id: 4,
     title: "Interpretable Malware Detection",
     description: "Self-attention-augmented 1D CNN using TensorFlow and Keras achieving 92% accuracy in Android malware detection. Modeled long-range opcode dependencies with explainable AI techniques. Published at ICCCNT 2025, IIT Indore.",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
@@ -37,7 +48,7 @@ const projects = [
     date: "Feb-Jul 2025"
   },
   {
-    id: 4,
+    id: 5,
     title: "Live Cricket Score Management",
     description: "Responsive full-stack web application for managing live cricket scores using React.js, Tailwind CSS, and REST APIs. Features auto-refreshing system for real-time updates and winning probability prediction models.",
     image: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
@@ -48,7 +59,7 @@ const projects = [
     date: "Mar-Jun 2025"
   },
   {
-    id: 5,
+    id: 6,
     title: "Behavior-Aware Influence Maximization",
     description: "Graph-based system using Python, NetworkX, and Genetic Algorithms to maximize user influence on Instagram. Incorporated behavioral insights on 70K-user dataset, outperforming traditional influence models in engagement.",
     image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
@@ -59,7 +70,7 @@ const projects = [
     date: "Feb-Jul 2025"
   },
   {
-    id: 6,
+    id: 7,
     title: "Firefox Custom Adblocker",
     description: "Browser extension for Firefox using JavaScript and WebExtensions API for custom ad blocking. Contributing to open-source development on GitHub to enhance privacy and browsing experience.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300",
