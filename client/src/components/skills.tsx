@@ -1,27 +1,27 @@
-import { Code, Server, Brain, Zap, Target, Sparkles } from "lucide-react";
+import { Code, Server, Brain, Zap, Target, Database, Sparkles, Cloud } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const skillCategories = [
   {
     icon: Code,
     title: "Full-Stack Development",
-    description: "Building end-to-end applications with modern frameworks and responsive design principles.",
+    description: "Building end-to-end web and mobile applications with modern frameworks, RESTful APIs, and real-time features.",
     bgColor: "bg-blue-600/20",
     iconColor: "text-blue-400",
     borderColor: "border-blue-400/30"
   },
   {
     icon: Brain,
-    title: "Machine Learning & AI", 
-    description: "Developing intelligent systems with deep learning, computer vision, and predictive modeling.",
+    title: "AI / ML / Research",
+    description: "Developing intelligent systems — from LSTM anomaly detectors to Gemini-powered NLP pipelines and medical CV models.",
     bgColor: "bg-purple-600/20",
     iconColor: "text-purple-400",
     borderColor: "border-purple-400/30"
   },
   {
-    icon: Server,
+    icon: Cloud,
     title: "Cloud & DevOps",
-    description: "Deploying scalable solutions on cloud platforms with modern infrastructure and tools.",
+    description: "Deploying scalable solutions on GCP, Railway, and Vercel with Docker, CI/CD, and modern infrastructure.",
     bgColor: "bg-green-600/20",
     iconColor: "text-green-400",
     borderColor: "border-green-400/30"
@@ -30,61 +30,100 @@ const skillCategories = [
 
 const skillSections = [
   {
-    title: "Programming Languages",
+    title: "Frontend",
     icon: Code,
     skills: [
-      { name: "Python", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
-      { name: "JavaScript", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
-      { name: "Java", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
-      { name: "C++", color: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-500/30" },
-      { name: "C", color: "bg-gray-500/20 text-gray-300 border-gray-400/30 hover:bg-gray-500/30" }
-    ]
-  },
-  {
-    title: "Web Development",
-    icon: Zap,
-    skills: [
       { name: "React.js", color: "bg-cyan-500/20 text-cyan-300 border-cyan-400/30 hover:bg-cyan-500/30" },
-      { name: "Node.js", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
-      { name: "HTML5", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
-      { name: "CSS3", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
-      { name: "Tailwind CSS", color: "bg-teal-500/20 text-teal-300 border-teal-400/30 hover:bg-teal-500/30" }
+      { name: "Next.js (App Router)", color: "bg-slate-500/20 text-slate-300 border-slate-400/30 hover:bg-slate-500/30" },
+      { name: "React Native (Expo)", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "TypeScript", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "JavaScript (ES6+)", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
+      { name: "Angular", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
+      { name: "Tailwind CSS", color: "bg-teal-500/20 text-teal-300 border-teal-400/30 hover:bg-teal-500/30" },
+      { name: "Chart.js", color: "bg-pink-500/20 text-pink-300 border-pink-400/30 hover:bg-pink-500/30" },
+      { name: "Socket.io", color: "bg-gray-500/20 text-gray-300 border-gray-400/30 hover:bg-gray-500/30" },
+      { name: "Jetpack Compose", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+      { name: "Material 3", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
     ]
   },
   {
-    title: "Machine Learning & AI",
-    icon: Brain,
-    skills: [
-      { name: "TensorFlow", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
-      { name: "Keras", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
-      { name: "Scikit-learn", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
-      { name: "Pandas", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
-      { name: "NumPy", color: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-500/30" },
-      { name: "Deep Learning", color: "bg-pink-500/20 text-pink-300 border-pink-400/30 hover:bg-pink-500/30" }
-    ]
-  },
-  {
-    title: "Databases & Cloud",
+    title: "Backend & APIs",
     icon: Server,
     skills: [
-      { name: "MongoDB", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
-      { name: "SQL", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
-      { name: "Google Cloud Platform", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
-      { name: "Vertex AI", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
-      { name: "BigQuery", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
-      { name: "Netlify", color: "bg-teal-500/20 text-teal-300 border-teal-400/30 hover:bg-teal-500/30" }
+      { name: "Node.js", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+      { name: "Express", color: "bg-gray-500/20 text-gray-300 border-gray-400/30 hover:bg-gray-500/30" },
+      { name: "NestJS", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
+      { name: "Flask", color: "bg-slate-500/20 text-slate-300 border-slate-400/30 hover:bg-slate-500/30" },
+      { name: "FastAPI", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+      { name: "REST APIs", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "WebSockets", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
+      { name: "JWT Auth", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
+      { name: "Auth.js v5", color: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-500/30" },
+      { name: "Redis", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
+      { name: "Stripe", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
+      { name: "Prisma ORM", color: "bg-teal-500/20 text-teal-300 border-teal-400/30 hover:bg-teal-500/30" },
     ]
   },
   {
-    title: "Tools & Technologies",
+    title: "AI / ML / Data",
+    icon: Brain,
+    skills: [
+      { name: "Python", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
+      { name: "PyTorch", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
+      { name: "TensorFlow / Keras", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
+      { name: "scikit-learn", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "SARIMA (statsmodels)", color: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-500/30" },
+      { name: "LSTM Autoencoder", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
+      { name: "FAISS", color: "bg-cyan-500/20 text-cyan-300 border-cyan-400/30 hover:bg-cyan-500/30" },
+      { name: "Gemini API", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "OpenAI API", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+      { name: "Hugging Face", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
+      { name: "sentence-transformers", color: "bg-pink-500/20 text-pink-300 border-pink-400/30 hover:bg-pink-500/30" },
+      { name: "spaCy / NLTK", color: "bg-teal-500/20 text-teal-300 border-teal-400/30 hover:bg-teal-500/30" },
+      { name: "MobileNetV2", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
+      { name: "pandas / NumPy", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
+      { name: "OpenCV", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+    ]
+  },
+  {
+    title: "Databases",
+    icon: Database,
+    skills: [
+      { name: "MongoDB", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+      { name: "PostgreSQL", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "SQLite", color: "bg-gray-500/20 text-gray-300 border-gray-400/30 hover:bg-gray-500/30" },
+      { name: "BigQuery", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
+      { name: "SQL", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "Room DB", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+      { name: "TypeORM", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
+    ]
+  },
+  {
+    title: "Cloud & DevOps",
+    icon: Cloud,
+    skills: [
+      { name: "Google Cloud Platform", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
+      { name: "Vertex AI", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
+      { name: "AWS (Basic)", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
+      { name: "Docker", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "Git / GitHub", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
+      { name: "Railway", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
+      { name: "Netlify / Vercel", color: "bg-teal-500/20 text-teal-300 border-teal-400/30 hover:bg-teal-500/30" },
+      { name: "Render / Fly.io", color: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-500/30" },
+    ]
+  },
+  {
+    title: "CS Fundamentals & Languages",
     icon: Target,
     skills: [
-      { name: "Git", color: "bg-orange-500/20 text-orange-300 border-orange-400/30 hover:bg-orange-500/30" },
-      { name: "Linux", color: "bg-gray-500/20 text-gray-300 border-gray-400/30 hover:bg-gray-500/30" },
-      { name: "AutoCAD", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
-      { name: "FastAPI", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
-      { name: "Streamlit", color: "bg-pink-500/20 text-pink-300 border-pink-400/30 hover:bg-pink-500/30" },
-      { name: "NetworkX", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" }
+      { name: "Data Structures & Algorithms", color: "bg-blue-500/20 text-blue-300 border-blue-400/30 hover:bg-blue-500/30" },
+      { name: "OOP", color: "bg-green-500/20 text-green-300 border-green-400/30 hover:bg-green-500/30" },
+      { name: "System Design", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
+      { name: "MVVM Architecture", color: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-500/30" },
+      { name: "Agile / Scrum", color: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30 hover:bg-yellow-500/30" },
+      { name: "C++", color: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30 hover:bg-indigo-500/30" },
+      { name: "Java", color: "bg-red-500/20 text-red-300 border-red-400/30 hover:bg-red-500/30" },
+      { name: "Kotlin", color: "bg-purple-500/20 text-purple-300 border-purple-400/30 hover:bg-purple-500/30" },
     ]
   }
 ];
@@ -113,7 +152,7 @@ export default function Skills() {
             </h2>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-              Proficient in cutting-edge technologies with hands-on experience in real-world projects
+              Full-stack, AI/ML, mobile, and cloud — with hands-on experience across 14+ shipped projects
             </p>
           </div>
 
@@ -160,7 +199,7 @@ export default function Skills() {
                     {section.skills.map((skill, skillIndex) => (
                       <Badge
                         key={skillIndex}
-                        className={`skill-badge px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 cursor-pointer transform border backdrop-blur-sm hover:scale-105 ${skill.color}`}
+                        className={`skill-badge px-5 py-2 rounded-xl font-medium text-sm transition-all duration-300 cursor-pointer transform border backdrop-blur-sm hover:scale-105 ${skill.color}`}
                         data-testid={`badge-skill-${sectionIndex}-${skillIndex}`}
                       >
                         {skill.name}

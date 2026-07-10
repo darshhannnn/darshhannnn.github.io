@@ -71,21 +71,21 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "darshanborimalla@gmail.com",
-      href: "mailto:darshanborimalla@gmail.com",
+      value: "darshankumarb3@gmail.com",
+      href: "mailto:darshankumarb3@gmail.com",
       color: "bg-blue-100 text-blue-600"
     },
     {
       icon: Phone,
       label: "Phone", 
-      value: "+91 95501 35476",
-      href: "tel:+919550135476",
+      value: "+91 8919527353",
+      href: "tel:+918919527353",
       color: "bg-green-100 text-green-600"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "India",
+      value: "Hyderabad, India",
       href: null,
       color: "bg-purple-100 text-purple-600"
     }

@@ -61,18 +61,18 @@ export default function Hero() {
           {/* Subtitle */}
           <div className="mb-8 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-300 mb-4">
-              Computer Science Student | Full-Stack & ML Developer
+              AI/ML Engineer · Full-Stack Developer · ICS Security Researcher
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full"></div>
           </div>
           
           {/* Description */}
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-12 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-            Driven Computer Science undergraduate with expertise in{" "}
+            Computer Science undergraduate building at the intersection of{" "}
             <span className="text-blue-300 font-semibold">machine learning</span>,{" "}
-            <span className="text-purple-300 font-semibold">full-stack development</span>, and{" "}
-            <span className="text-green-300 font-semibold">cloud technologies</span>.{" "}
-            Proven track record of building scalable solutions.
+            <span className="text-purple-300 font-semibold">ICS security research</span>, and{" "}
+            <span className="text-green-300 font-semibold">full-stack products</span>.{" "}
+            Published IEEE researcher, hackathon builder, and habitual shipper of end-to-end systems — from LSTM anomaly detectors to production SaaS starters.
           </p>
           
           {/* Action Buttons */}
@@ -126,7 +126,7 @@ export default function Hero() {
               <Github className="h-7 w-7 text-white group-hover:scale-110 transition-transform" />
             </a>
             <a 
-              href="mailto:darshanborimalla@gmail.com"
+              href="mailto:darshankumarb3@gmail.com"
               className="group w-14 h-14 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-3 hover:shadow-xl shadow-red-500/30"
             >
               <Mail className="h-7 w-7 text-white group-hover:scale-110 transition-transform" />

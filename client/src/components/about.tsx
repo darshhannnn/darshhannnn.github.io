@@ -12,27 +12,27 @@ export default function About() {
   };
 
   const stats = [
-    { label: "Projects Completed", value: "15+", icon: Award },
-    { label: "Research Papers", value: "1", icon: Users },
+    { label: "Projects Shipped", value: "14+", icon: Award },
+    { label: "IEEE Papers Published", value: "2", icon: Users },
   ];
 
   const highlights = [
     {
       icon: GraduationCap,
       title: "Education",
-      description: "B.Tech in Computer Science and Engineering at Amrita Vishwa Vidyapeetham",
+      description: "B.Tech CSE at Amrita Vishwa Vidyapeetham — CGPA 7.8/10.0 (2022–2026)",
       color: "bg-blue-600/20 text-blue-300"
     },
     {
       icon: Briefcase,
       title: "Experience",
-      description: "Full Stack Development Internship (May-July 2025)",
+      description: "Software Development Intern — FinTech-Oriented Systems (Apr–Jun 2025)",
       color: "bg-purple-600/20 text-purple-300"
     },
     {
       icon: Award,
-      title: "Achievement",
-      description: "Research paper accepted at ICCCNT 2025, IIT Indore",
+      title: "Publications",
+      description: "IEEE ICCCNT 2025 (IIT Indore) • CICN 2025 (NIT Goa)",
       color: "bg-green-600/20 text-green-300"
     }
   ];
@@ -66,15 +66,15 @@ export default function About() {
             <div className="animate-slide-in-left">
               <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
                 <p className="text-xl text-white font-medium">
-                  I'm a driven Computer Science undergraduate at Amrita Vishwa Vidyapeetham with expertise in machine learning, full-stack development and cloud technologies.
+                  I'm Darshan Kumar Borimalla — an AI/ML Engineer, Full-Stack Developer, and ICS Security Researcher based in Hyderabad, India.
                 </p>
                 
                 <p>
-                  Currently maintaining a CGPA of 7.61/10.0, I'm passionate about building scalable solutions that solve real-world problems. My journey spans from developing AI-enhanced cloud monitoring systems to creating interpretable malware detection models.
+                  Currently completing a B.Tech in CSE at Amrita Vishwa Vidyapeetham (CGPA 7.8/10.0), I build at the intersection of machine learning, industrial control system security, and production-grade full-stack products. I've shipped 14+ projects spanning LSTM anomaly detectors, Gemini-powered NLP pipelines, SaaS starters, and mobile apps.
                 </p>
                 
                 <p>
-                  I've completed internships, published research at ICCCNT 2025, and actively contribute to open-source projects. I believe in innovation through collaborative problem-solving and am always eager to learn new technologies.
+                  I'm a published IEEE researcher (ICCCNT 2025, IIT Indore), a hackathon builder (HackRx 6.0, AeroHack), and ranked #826/1,773 at HackerRank Orchestrate for AI agent deployment. I believe in shipping real things, not just prototypes.
                 </p>
               </div>
 
@@ -84,7 +84,7 @@ export default function About() {
                   <div className="bg-blue-600/20 border border-blue-400/30 p-2 rounded-lg group-hover:bg-blue-600/30 transition-colors backdrop-blur-sm">
                     <MapPin className="h-5 w-5 text-blue-400" />
                   </div>
-                  <span className="text-gray-300 font-medium">India</span>
+                  <span className="text-gray-300 font-medium">Hyderabad, India</span>
                 </div>
                 <div className="flex items-center gap-3 group">
                   <div className="bg-green-600/20 border border-green-400/30 p-2 rounded-lg group-hover:bg-green-600/30 transition-colors backdrop-blur-sm">
