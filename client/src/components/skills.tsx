@@ -1,5 +1,6 @@
 import { Code, Server, Brain, Cloud, Database, Target, Zap } from 'lucide-react';
 import { useScrollReveal } from '../hooks/use-scroll-reveal';
+import ScrollReveal from './ScrollReveal';
 
 const categories = [
   {
@@ -79,6 +80,21 @@ export default function Skills() {
           <p className="section-subtitle">
             Full-stack, AI/ML, mobile, and cloud technologies
           </p>
+        </div>
+
+        {/* ScrollReveal statement */}
+        <div className="mb-16 max-w-4xl mx-auto">
+          <ScrollReveal
+            baseOpacity={0}
+            enableBlur={true}
+            baseRotation={4}
+            blurStrength={8}
+            containerClassName=""
+            textClassName="text-white/70"
+            wordAnimationEnd="bottom center"
+          >
+            From full-stack web applications to AI-powered research systems — I build with React, Node.js, Python, PyTorch, FastAPI, Docker, and cloud-native tools across the entire stack.
+          </ScrollReveal>
         </div>
 
         {/* Category cards */}

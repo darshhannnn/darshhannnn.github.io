@@ -1,0 +1,21 @@
+.scroll-reveal {
+  margin: 0;
+}
+
+.scroll-reveal-text {
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* Hero name variant — large display size */
+.scroll-reveal-text.hero-text {
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.word {
+  display: inline-block;
+}

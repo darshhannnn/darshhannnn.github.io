@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Download, Mail, Github, Linkedin, ChevronDown } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 // Helper: inline fade-in style driven by mounted state
 const fadeIn = (mounted: boolean, delay = 0) => ({
@@ -90,18 +91,27 @@ export default function Hero() {
           <span className="text-sm font-medium text-emerald-400">Available for opportunities</span>
         </div>
 
-        {/* Name */}
-        <h1 className="mb-6" style={fadeIn(mounted, 0.2)}>
-          <span
-            className="block font-[var(--font-display)] text-[clamp(3.5rem,10vw,8rem)] font-bold leading-[0.9] tracking-tight text-white/90"
-            style={{ transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)` }}
+        {/* Name — ScrollReveal word-by-word */}
+        <div
+          className="mb-6"
+          style={{
+            ...fadeIn(mounted, 0.2),
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+          }}
+        >
+          <ScrollReveal
+            baseOpacity={0.05}
+            enableBlur={true}
+            baseRotation={3}
+            blurStrength={6}
+            rotationEnd="bottom 80%"
+            wordAnimationEnd="bottom 60%"
+            containerClassName=""
+            textClassName="hero-text text-white/90"
           >
-            Borimalla
-          </span>
-          <span className="block font-[var(--font-display)] text-[clamp(3.5rem,10vw,8rem)] font-bold leading-[0.9] tracking-tight text-gradient">
-            Darshan Kumar
-          </span>
-        </h1>
+            Borimalla Darshan Kumar
+          </ScrollReveal>
+        </div>
 
         {/* Title */}
         <div
