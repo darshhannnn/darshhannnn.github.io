@@ -59,12 +59,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  font-family: var(--font-sans);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  overflow-x: hidden;
-  line-height: 1.6;
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #09090b;
+    color: #fafafa;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
 }
 
 ::selection {
