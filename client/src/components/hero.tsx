@@ -72,7 +72,7 @@ export default function Hero() {
             <span className="text-blue-300 font-semibold">machine learning</span>,{" "}
             <span className="text-purple-300 font-semibold">ICS security research</span>, and{" "}
             <span className="text-green-300 font-semibold">full-stack products</span>.{" "}
-            Published IEEE researcher, hackathon builder, and habitual shipper of end-to-end systems — from LSTM anomaly detectors to production SaaS starters.
+            Published IEEE researcher (ICCCNT 2025, IIT Indore), hackathon builder (HackRx 6.0, AeroHack), and habitual shipper of end-to-end systems — from LSTM anomaly detectors to production SaaS starters.
           </p>
           
           {/* Action Buttons */}

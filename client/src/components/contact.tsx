@@ -105,13 +105,6 @@ export default function Contact() {
       label: "GitHub", 
       bgColor: "bg-gray-700 hover:bg-gray-600",
       hoverEffect: "hover:scale-110 hover:-rotate-6"
-    },
-    { 
-      icon: Twitter, 
-      href: "#", 
-      label: "Twitter", 
-      bgColor: "bg-blue-400 hover:bg-blue-500",
-      hoverEffect: "hover:scale-110 hover:rotate-3"
     }
   ];
 

@@ -26,13 +26,13 @@ export default function About() {
     {
       icon: Briefcase,
       title: "Experience",
-      description: "Software Development Intern — FinTech-Oriented Systems (Apr–Jun 2025)",
+      description: "Software Development Intern — FinTech-Oriented Systems (Apr–Jun 2025). RESTful APIs, OOP, agile sprints.",
       color: "bg-purple-600/20 text-purple-300"
     },
     {
       icon: Award,
       title: "Publications",
-      description: "IEEE ICCCNT 2025 (IIT Indore) • CICN 2025 (NIT Goa)",
+      description: "IEEE ICCCNT 2025 (IIT Indore) — ICS Malware Detection. CICN 2025 (NIT Goa) — Social Graph Analysis.",
       color: "bg-green-600/20 text-green-300"
     }
   ];
@@ -70,11 +70,11 @@ export default function About() {
                 </p>
                 
                 <p>
-                  Currently completing a B.Tech in CSE at Amrita Vishwa Vidyapeetham (CGPA 7.8/10.0), I build at the intersection of machine learning, industrial control system security, and production-grade full-stack products. I've shipped 14+ projects spanning LSTM anomaly detectors, Gemini-powered NLP pipelines, SaaS starters, and mobile apps.
+                  Currently completing a B.Tech in CSE at Amrita Vishwa Vidyapeetham (CGPA 7.8/10.0, 2022–2026), I build at the intersection of machine learning, industrial control system security, and production-grade full-stack products. I've shipped 14+ projects spanning LSTM anomaly detectors, Gemini-powered NLP pipelines, SaaS starters, and mobile apps.
                 </p>
                 
                 <p>
-                  I'm a published IEEE researcher (ICCCNT 2025, IIT Indore), a hackathon builder (HackRx 6.0, AeroHack), and ranked #826/1,773 at HackerRank Orchestrate for AI agent deployment. I believe in shipping real things, not just prototypes.
+                  I'm a published IEEE researcher — primary paper at ICCCNT 2025 (IIT Indore) on "Interpretable Malware Detection Using a Self-Attention Augmented 1D CNN", and second paper at CICN 2025 (NIT Goa) on "Behavior-Aware Influence Maximization using Genetic Algorithms on Instagram Social Graph". I ranked #826/1,773 at HackerRank Orchestrate June 2026 for building and deploying an AI agent. I believe in shipping real things, not just prototypes.
                 </p>
               </div>
 
