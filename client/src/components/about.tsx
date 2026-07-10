@@ -1,5 +1,4 @@
-import { Download, MapPin, Briefcase, GraduationCap, Award, Users, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Download, MapPin, Briefcase, GraduationCap, Award, Users, Sparkles, Trophy, BookOpen } from "lucide-react";
 
 export default function About() {
   const handleDownloadResume = () => {
@@ -12,8 +11,9 @@ export default function About() {
   };
 
   const stats = [
-    { label: "Projects Shipped", value: "14+", icon: Award },
-    { label: "IEEE Papers Published", value: "2", icon: Users },
+    { label: "Projects Shipped", value: "14+", icon: Award, gradient: "from-indigo-500 to-purple-500" },
+    { label: "IEEE Papers Published", value: "2", icon: BookOpen, gradient: "from-cyan-500 to-blue-500" },
+    { label: "HackerRank Rank", value: "#826", icon: Trophy, gradient: "from-amber-500 to-orange-500" },
   ];
 
   const highlights = [
@@ -21,97 +21,100 @@ export default function About() {
       icon: GraduationCap,
       title: "Education",
       description: "B.Tech CSE at Amrita Vishwa Vidyapeetham — CGPA 7.8/10.0 (2022–2026)",
-      color: "bg-blue-600/20 text-blue-300"
+      gradient: "from-indigo-500 to-purple-500",
     },
     {
       icon: Briefcase,
       title: "Experience",
-      description: "Software Development Intern — FinTech-Oriented Systems (Apr–Jun 2025). RESTful APIs, OOP, agile sprints.",
-      color: "bg-purple-600/20 text-purple-300"
+      description: "Software Development Intern — FinTech-Oriented Systems (Apr–Jun 2025)",
+      gradient: "from-cyan-500 to-blue-500",
     },
     {
       icon: Award,
       title: "Publications",
-      description: "IEEE ICCCNT 2025 (IIT Indore) — ICS Malware Detection. CICN 2025 (NIT Goa) — Social Graph Analysis.",
-      color: "bg-green-600/20 text-green-300"
-    }
+      description: "IEEE ICCCNT 2025 (IIT Indore) • CICN 2025 (NIT Goa)",
+      gradient: "from-emerald-500 to-teal-500",
+    },
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900 to-slate-900"></div>
-      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-full blur-3xl floating-animation"></div>
-      <div className="absolute bottom-20 left-10 w-48 h-48 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-full blur-3xl floating-animation" style={{animationDelay: '1s'}}></div>
+    <section id="about" className="py-32 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 gradient-bg" />
+      <div className="absolute inset-0 mesh-bg" />
+      
+      {/* Floating orbs */}
+      <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-[100px] float-modern" />
+      <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-full blur-[80px] float-delayed" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
           
           {/* Header */}
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-400/30 mb-6 animate-bounce-in">
-              <Sparkles className="h-4 w-4 text-blue-400" />
-              <span className="text-sm font-medium text-blue-200">Get to know me</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-strong mb-6 animate-bounce-in">
+              <Sparkles className="h-4 w-4 text-indigo-400" />
+              <span className="text-sm font-medium text-white/70">Get to know me</span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in-up">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
               About{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Me</span>
+              <span className="gradient-text">Me</span>
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             
             {/* Text Content */}
             <div className="animate-slide-in-left">
-              <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
-                <p className="text-xl text-white font-medium">
+              <div className="space-y-6 text-lg text-white/50 leading-relaxed">
+                <p className="text-xl text-white/80 font-medium">
                   I'm Darshan Kumar Borimalla — an AI/ML Engineer, Full-Stack Developer, and ICS Security Researcher based in Hyderabad, India.
                 </p>
                 
                 <p>
-                  Currently completing a B.Tech in CSE at Amrita Vishwa Vidyapeetham (CGPA 7.8/10.0, 2022–2026), I build at the intersection of machine learning, industrial control system security, and production-grade full-stack products. I've shipped 14+ projects spanning LSTM anomaly detectors, Gemini-powered NLP pipelines, SaaS starters, and mobile apps.
+                  Currently completing a B.Tech in CSE at Amrita Vishwa Vidyapeetham (CGPA 7.8/10.0), I build at the intersection of machine learning, industrial control system security, and production-grade full-stack products. I've shipped 14+ projects spanning LSTM anomaly detectors, Gemini-powered NLP pipelines, SaaS starters, and mobile apps.
                 </p>
                 
                 <p>
-                  I'm a published IEEE researcher — primary paper at ICCCNT 2025 (IIT Indore) on "Interpretable Malware Detection Using a Self-Attention Augmented 1D CNN", and second paper at CICN 2025 (NIT Goa) on "Behavior-Aware Influence Maximization using Genetic Algorithms on Instagram Social Graph". I ranked #826/1,773 at HackerRank Orchestrate June 2026 for building and deploying an AI agent. I believe in shipping real things, not just prototypes.
+                  I'm a published IEEE researcher — primary paper at ICCCNT 2025 (IIT Indore) on "Interpretable Malware Detection Using a Self-Attention Augmented 1D CNN", and second paper at CICN 2025 (NIT Goa) on "Behavior-Aware Influence Maximization using Genetic Algorithms on Instagram Social Graph". I ranked #826/1,773 at HackerRank Orchestrate June 2026 for building and deploying an AI agent.
                 </p>
               </div>
 
               {/* Contact Info */}
-              <div className="flex flex-wrap gap-6 my-8">
-                <div className="flex items-center gap-3 group">
-                  <div className="bg-blue-600/20 border border-blue-400/30 p-2 rounded-lg group-hover:bg-blue-600/30 transition-colors backdrop-blur-sm">
-                    <MapPin className="h-5 w-5 text-blue-400" />
+              <div className="flex flex-wrap gap-4 my-8">
+                <div className="flex items-center gap-3 glass px-4 py-3 rounded-xl hover-glow">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
+                    <MapPin className="h-5 w-5 text-white" />
                   </div>
-                  <span className="text-gray-300 font-medium">Hyderabad, India</span>
+                  <span className="text-white/70 font-medium">Hyderabad, India</span>
                 </div>
-                <div className="flex items-center gap-3 group">
-                  <div className="bg-green-600/20 border border-green-400/30 p-2 rounded-lg group-hover:bg-green-600/30 transition-colors backdrop-blur-sm">
-                    <Briefcase className="h-5 w-5 text-green-400" />
+                <div className="flex items-center gap-3 glass px-4 py-3 rounded-xl hover-glow">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                    <Briefcase className="h-5 w-5 text-white" />
                   </div>
-                  <span className="text-gray-300 font-medium">Open to opportunities</span>
+                  <span className="text-white/70 font-medium">Open to opportunities</span>
                 </div>
               </div>
 
-              <Button
+              <button
                 onClick={handleDownloadResume}
-                className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-blue-500/25"
+                className="group btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center gap-3 w-fit"
                 data-testid="button-download-resume"
               >
-                <Download className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+                <Download className="h-5 w-5 group-hover:animate-bounce" />
                 Download Resume
-              </Button>
+              </button>
             </div>
             
             {/* Image and Stats */}
             <div className="animate-slide-in-right">
               <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-2xl blur-2xl"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
                 <img
                   src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
                   alt="Modern office workspace"
-                  className="relative rounded-2xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-500 border border-white/10"
+                  className="relative rounded-2xl shadow-2xl w-full h-auto transform hover:scale-[1.02] transition-transform duration-500 border border-white/10"
                   data-testid="img-workspace"
                 />
               </div>
@@ -119,36 +122,32 @@ export default function About() {
           </div>
 
           {/* Stats Section */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-6 mb-20">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
-                <div key={index} className="group text-center animate-scale-in" style={{animationDelay: `${index * 0.2}s`}}>
-                  <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2 group-hover:border-blue-400/30 group-hover:bg-slate-800/70">
-                    <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-400/30 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform backdrop-blur-sm">
-                      <IconComponent className="h-8 w-8 text-blue-400" />
-                    </div>
-                    <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                    <div className="text-gray-400 font-medium">{stat.label}</div>
+                <div key={index} className="group glass-card rounded-2xl p-8 hover-lift" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <IconComponent className="h-7 w-7 text-white" />
                   </div>
+                  <div className="text-4xl font-bold text-white mb-2">{stat.value}</div>
+                  <div className="text-white/50 font-medium">{stat.label}</div>
                 </div>
               );
             })}
           </div>
 
           {/* Highlights */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {highlights.map((highlight, index) => {
               const IconComponent = highlight.icon;
               return (
-                <div key={index} className="group animate-fade-in-up" style={{animationDelay: `${index * 0.1}s`}}>
-                  <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-slate-600/50 group-hover:bg-slate-800/70">
-                    <div className={`${highlight.color} border border-current/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-sm`}>
-                      <IconComponent className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">{highlight.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{highlight.description}</p>
+                <div key={index} className="group glass-card rounded-2xl p-6 hover-lift" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${highlight.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <IconComponent className="h-6 w-6 text-white" />
                   </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">{highlight.title}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed">{highlight.description}</p>
                 </div>
               );
             })}
