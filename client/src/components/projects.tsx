@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { ExternalLink, Github, ArrowRight, Star } from 'lucide-react';
 import { useScrollReveal } from '../hooks/use-scroll-reveal';
 import BorderGlow from './ui/BorderGlow';
+import ProjectDetailPanel from './ProjectDetailPanel';
 
 const projects = [
   {
@@ -111,112 +113,143 @@ const projects = [
   },
 ];
 
+type Project = (typeof projects)[number];
+
 export default function Projects() {
   const header = useScrollReveal();
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="section">
-      <div className="container-custom">
-        {/* Header */}
-        <div ref={header.ref} className={`section-header reveal ${header.isVisible ? 'active' : ''}`}>
-          <div className="section-badge">
-            <Star className="w-4 h-4 text-amber-400" />
-            {projects.length} Projects
+    <>
+      <section id="projects" className="section">
+        <div className="container-custom">
+          {/* Header */}
+          <div ref={header.ref} className={`section-header reveal ${header.isVisible ? 'active' : ''}`}>
+            <div className="section-badge">
+              <Star className="w-4 h-4 text-amber-400" />
+              {projects.length} Projects
+            </div>
+            <h2 className="section-title">
+              Featured <span className="text-gradient">Work</span>
+            </h2>
+            <p className="section-subtitle">
+              Published research, hackathon builds, and full-stack products
+            </p>
           </div>
-          <h2 className="section-title">
-            Featured <span className="text-gradient">Work</span>
-          </h2>
-          <p className="section-subtitle">
-            Published research, hackathon builds, and full-stack products
-          </p>
-        </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => {
-            const { ref, isVisible } = useScrollReveal({ threshold: 0.1 });
-            return (
-              <div
-                key={project.id}
-                ref={ref}
-                className={`reveal ${isVisible ? 'active' : ''}`}
-                style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
-              >
-                <BorderGlow
-                  className="h-full"
-                  backgroundColor="#09090b"
-                  borderRadius={16}
-                  glowRadius={30}
-                  glowIntensity={0.8}
-                  edgeSensitivity={25}
-                  coneSpread={30}
-                  colors={['#6366f1', '#8b5cf6', '#06b6d4']}
+          {/* Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project, i) => {
+              const { ref, isVisible } = useScrollReveal({ threshold: 0.1 });
+              return (
+                <div
+                  key={project.id}
+                  ref={ref}
+                  className={`reveal ${isVisible ? 'active' : ''}`}
+                  style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
                 >
-                  <div className="project-card !border-0 !shadow-none">
-                    {/* Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="overlay">
-                        <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                          <ExternalLink className="w-8 h-8 mx-auto mb-2" />
-                          <p className="font-semibold">View Project</p>
+                  <BorderGlow
+                    className="h-full"
+                    backgroundColor="#09090b"
+                    borderRadius={16}
+                    glowRadius={30}
+                    glowIntensity={0.8}
+                    edgeSensitivity={25}
+                    coneSpread={30}
+                    colors={['#6366f1', '#8b5cf6', '#06b6d4']}
+                  >
+                    {/* Clickable card */}
+                    <div
+                      className="project-card !border-0 !shadow-none cursor-pointer group"
+                      onClick={() => setSelectedProject(project)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View details for ${project.title}`}
+                      onKeyDown={e => { if (e.key === 'Enter') setSelectedProject(project); }}
+                    >
+                      {/* Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="overlay">
+                          <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            <ExternalLink className="w-8 h-8 mx-auto mb-2" />
+                            <p className="font-semibold">View Details</p>
+                          </div>
+                        </div>
+                        <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${project.gradient}`}>
+                          {project.badge}
                         </div>
                       </div>
-                      <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${project.gradient}`}>
-                        {project.badge}
-                      </div>
-                    </div>
 
-                    {/* Content */}
-                    <div className="p-5">
-                      <div className="mb-2">
-                        <h3 className="font-bold text-white group-hover:text-indigo-400 transition-colors">{project.title}</h3>
-                        <p className="text-xs text-white/30">{project.subtitle}</p>
-                      </div>
-                      <p className="text-sm text-white/40 mb-4 line-clamp-2">{project.description}</p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.map((tag, j) => (
-                          <span key={j} className="skill-tag text-xs py-1 px-2">{tag}</span>
-                        ))}
-                      </div>
+                      {/* Content */}
+                      <div className="p-5">
+                        <div className="mb-2">
+                          <h3 className="font-bold text-white group-hover:text-indigo-400 transition-colors">{project.title}</h3>
+                          <p className="text-xs text-white/30">{project.subtitle}</p>
+                        </div>
+                        <p className="text-sm text-white/40 mb-4 line-clamp-2">{project.description}</p>
 
-                      <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                        {project.live ? (
-                          <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
-                            <ExternalLink className="w-3.5 h-3.5" />
-                            Live
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.tags.map((tag, j) => (
+                            <span key={j} className="skill-tag text-xs py-1 px-2">{tag}</span>
+                          ))}
+                        </div>
+
+                        <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                          {project.live ? (
+                            <a
+                              href={project.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+                              onClick={e => e.stopPropagation()}
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                              Live
+                            </a>
+                          ) : (
+                            <span />
+                          )}
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-white/40 hover:text-white flex items-center gap-1"
+                            onClick={e => e.stopPropagation()}
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            Code
                           </a>
-                        ) : (
-                          <span />
-                        )}
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white flex items-center gap-1">
-                          <Github className="w-3.5 h-3.5" />
-                          Code
-                        </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </BorderGlow>
-              </div>
-            );
-          })}
-        </div>
+                  </BorderGlow>
+                </div>
+              );
+            })}
+          </div>
 
-        {/* View all */}
-        <div className="text-center mt-12">
-          <a href="https://github.com/darshhannnn" target="_blank" rel="noopener noreferrer">
-            <button className="btn btn-ghost">
-              View All on GitHub
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </a>
+          {/* View all */}
+          <div className="text-center mt-12">
+            <a href="https://github.com/darshhannnn" target="_blank" rel="noopener noreferrer">
+              <button className="btn btn-ghost">
+                View All on GitHub
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Project detail panel — rendered outside section for proper z-index stacking */}
+      <ProjectDetailPanel
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+    </>
   );
 }
