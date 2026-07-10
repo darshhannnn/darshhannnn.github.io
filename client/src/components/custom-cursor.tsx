@@ -1,156 +1,103 @@
 import { useEffect, useState, useRef } from 'react';
 
-interface Position {
-  x: number;
-  y: number;
-}
-
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState<Position>({ x: 0, y: 0 });
-  const [trailPosition, setTrailPosition] = useState<Position>({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-  const animationRef = useRef<number>();
-  const mouseTrail = useRef<Position[]>([]);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [trail, setTrail] = useState({ x: 0, y: 0 });
+  const [visible, setVisible] = useState(false);
+  const [hovering, setHovering] = useState(false);
+  const raf = useRef<number>();
+  const points = useRef<{ x: number; y: number }[]>([]);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      const newPos = { x: e.clientX, y: e.clientY };
-      setMousePosition(newPos);
-      
-      // Add to trail with spacing
-      const lastPos = mouseTrail.current[mouseTrail.current.length - 1];
-      if (!lastPos || Math.sqrt(Math.pow(newPos.x - lastPos.x, 2) + Math.pow(newPos.y - lastPos.y, 2)) > 3) {
-        mouseTrail.current.push(newPos);
-        if (mouseTrail.current.length > 40) {
-          mouseTrail.current.shift();
-        }
+    const onMove = (e: MouseEvent) => {
+      const p = { x: e.clientX, y: e.clientY };
+      setPos(p);
+      const last = points.current[points.current.length - 1];
+      if (!last || Math.hypot(p.x - last.x, p.y - last.y) > 3) {
+        points.current.push(p);
+        if (points.current.length > 30) points.current.shift();
       }
-      
-      setIsVisible(true);
+      setVisible(true);
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+    const onLeave = () => setVisible(false);
+    const onEnter = () => setVisible(true);
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('button, a, input, textarea, select, [role="button"]')) {
-        setIsHovering(true);
+    const onOver = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).closest('button, a, input, textarea, select, [role="button"]')) {
+        setHovering(true);
       }
     };
 
-    const handleMouseOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('button, a, input, textarea, select, [role="button"]')) {
-        setIsHovering(false);
+    const onOut = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).closest('button, a, input, textarea, select, [role="button"]')) {
+        setHovering(false);
       }
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('mouseenter', handleMouseEnter);
-    document.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('mouseout', handleMouseOut);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseleave', onLeave);
+    window.addEventListener('mouseenter', onEnter);
+    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mouseout', onOut);
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-      window.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseover', handleMouseOver);
-      document.removeEventListener('mouseout', handleMouseOut);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseleave', onLeave);
+      window.removeEventListener('mouseenter', onEnter);
+      document.removeEventListener('mouseover', onOver);
+      document.removeEventListener('mouseout', onOut);
     };
   }, []);
 
   useEffect(() => {
-    const updateTrailPosition = () => {
-      if (mouseTrail.current.length === 0) {
-        animationRef.current = requestAnimationFrame(updateTrailPosition);
-        return;
+    const tick = () => {
+      if (points.current.length) {
+        const target = points.current[Math.max(0, points.current.length - 5)];
+        setTrail(p => {
+          const dx = target.x - p.x;
+          const dy = target.y - p.y;
+          return Math.hypot(dx, dy) < 0.5 ? target : { x: p.x + dx * 0.15, y: p.y + dy * 0.15 };
+        });
       }
-
-      setTrailPosition(prev => {
-        const trailDelay = 6;
-        const targetIndex = Math.max(0, mouseTrail.current.length - trailDelay);
-        const targetPos = mouseTrail.current[targetIndex];
-        
-        if (!targetPos) return prev;
-
-        const dx = targetPos.x - prev.x;
-        const dy = targetPos.y - prev.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < 0.5) return targetPos;
-        
-        const speed = 0.15;
-        return {
-          x: prev.x + dx * speed,
-          y: prev.y + dy * speed
-        };
-      });
-      
-      animationRef.current = requestAnimationFrame(updateTrailPosition);
+      raf.current = requestAnimationFrame(tick);
     };
-
-    animationRef.current = requestAnimationFrame(updateTrailPosition);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
+    raf.current = requestAnimationFrame(tick);
+    return () => { if (raf.current) cancelAnimationFrame(raf.current); };
   }, []);
 
-  if (!isVisible) return null;
+  if (!visible) return null;
 
   return (
     <>
-      {/* Main cursor dot */}
+      {/* Dot */}
       <div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] transition-transform duration-75"
-        style={{
-          transform: `translate(${mousePosition.x - 4}px, ${mousePosition.y - 4}px)`,
-        }}
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        style={{ transform: `translate(${pos.x - 4}px, ${pos.y - 4}px)` }}
       >
-        <div 
-          className={`rounded-full transition-all duration-200 ${
-            isHovering 
-              ? 'w-8 h-8 bg-white/20 border border-white/40 -m-4' 
-              : 'w-2 h-2 bg-white'
-          }`}
-        />
+        <div className={`rounded-full transition-all duration-150 ${
+          hovering ? 'w-8 h-8 bg-white/10 border border-white/30 -m-4' : 'w-2 h-2 bg-white'
+        }`} />
       </div>
-      
-      {/* Trailing circle */}
+
+      {/* Ring */}
       <div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
-        style={{
-          transform: `translate(${trailPosition.x - 16}px, ${trailPosition.y - 16}px)`,
-        }}
+        style={{ transform: `translate(${trail.x - 16}px, ${trail.y - 16}px)` }}
       >
-        <div 
-          className={`w-8 h-8 rounded-full border transition-all duration-300 ${
-            isHovering 
-              ? 'border-indigo-400/60 scale-150' 
-              : 'border-white/20 scale-100'
-          }`}
-        />
+        <div className={`w-8 h-8 rounded-full border transition-all duration-300 ${
+          hovering ? 'border-indigo-400/50 scale-150' : 'border-white/15'
+        }`} />
       </div>
-      
-      {/* Glow effect */}
+
+      {/* Glow */}
       <div
         className="fixed top-0 left-0 pointer-events-none z-[9997]"
-        style={{
-          transform: `translate(${trailPosition.x - 24}px, ${trailPosition.y - 24}px)`,
-        }}
+        style={{ transform: `translate(${trail.x - 24}px, ${trail.y - 24}px)` }}
       >
-        <div 
-          className={`w-12 h-12 rounded-full transition-all duration-500 ${
-            isHovering 
-              ? 'bg-indigo-400/20 blur-xl' 
-              : 'bg-white/5 blur-lg'
-          }`}
-        />
+        <div className={`w-12 h-12 rounded-full transition-all duration-500 ${
+          hovering ? 'bg-indigo-400/15 blur-xl' : 'bg-white/5 blur-lg'
+        }`} />
       </div>
     </>
   );
