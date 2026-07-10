@@ -1,5 +1,6 @@
 import { ExternalLink, Github, ArrowRight, Star } from 'lucide-react';
 import { useScrollReveal } from '../hooks/use-scroll-reveal';
+import BorderGlow from './ui/BorderGlow';
 
 const projects = [
   {
@@ -138,56 +139,69 @@ export default function Projects() {
               <div
                 key={project.id}
                 ref={ref}
-                className={`project-card reveal ${isVisible ? 'active' : ''} ${project.featured ? 'ring-1 ring-amber-500/20' : ''}`}
+                className={`reveal ${isVisible ? 'active' : ''}`}
                 style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
               >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="overlay">
-                    <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <ExternalLink className="w-8 h-8 mx-auto mb-2" />
-                      <p className="font-semibold">View Project</p>
+                <BorderGlow
+                  className="h-full"
+                  backgroundColor="#09090b"
+                  borderRadius={16}
+                  glowRadius={30}
+                  glowIntensity={0.8}
+                  edgeSensitivity={25}
+                  coneSpread={30}
+                  colors={['#6366f1', '#8b5cf6', '#06b6d4']}
+                >
+                  <div className="project-card !border-0 !shadow-none">
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="overlay">
+                        <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                          <ExternalLink className="w-8 h-8 mx-auto mb-2" />
+                          <p className="font-semibold">View Project</p>
+                        </div>
+                      </div>
+                      <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${project.gradient}`}>
+                        {project.badge}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-5">
+                      <div className="mb-2">
+                        <h3 className="font-bold text-white group-hover:text-indigo-400 transition-colors">{project.title}</h3>
+                        <p className="text-xs text-white/30">{project.subtitle}</p>
+                      </div>
+                      <p className="text-sm text-white/40 mb-4 line-clamp-2">{project.description}</p>
+                      
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag, j) => (
+                          <span key={j} className="skill-tag text-xs py-1 px-2">{tag}</span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                        {project.live ? (
+                          <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            Live
+                          </a>
+                        ) : (
+                          <span />
+                        )}
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white flex items-center gap-1">
+                          <Github className="w-3.5 h-3.5" />
+                          Code
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${project.gradient}`}>
-                    {project.badge}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5">
-                  <div className="mb-2">
-                    <h3 className="font-bold text-white group-hover:text-indigo-400 transition-colors">{project.title}</h3>
-                    <p className="text-xs text-white/30">{project.subtitle}</p>
-                  </div>
-                  <p className="text-sm text-white/40 mb-4 line-clamp-2">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, j) => (
-                      <span key={j} className="skill-tag text-xs py-1 px-2">{tag}</span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                    {project.live ? (
-                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-sm text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        Live
-                      </a>
-                    ) : (
-                      <span />
-                    )}
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white flex items-center gap-1">
-                      <Github className="w-3.5 h-3.5" />
-                      Code
-                    </a>
-                  </div>
-                </div>
+                </BorderGlow>
               </div>
             );
           })}
