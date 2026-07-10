@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borimalla Darshan Kumar - Portfolio</title>
+    <title>Darshan Kumar Borimalla - Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -21,6 +21,39 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        nav .logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #60a5fa;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        nav a:hover { color: #60a5fa; }
         .hero {
             min-height: 100vh;
             display: flex;
@@ -39,12 +72,12 @@
             margin-bottom: 1rem;
         }
         .hero h2 {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: #fbbf24;
             margin-bottom: 2rem;
         }
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: #cbd5e1;
             max-width: 800px;
             margin: 0 auto 3rem;
@@ -57,23 +90,34 @@
             text-decoration: none;
             border-radius: 10px;
             font-weight: 600;
-            margin: 0 10px;
+            margin: 8px 10px;
             transition: transform 0.3s ease;
         }
         .btn:hover {
             transform: translateY(-2px);
         }
+        .btn.outline {
+            background: transparent;
+            border: 1px solid #60a5fa;
+        }
         .section {
             padding: 80px 0;
+            scroll-margin-top: 70px;
         }
         .section h2 {
             font-size: 3rem;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             background: linear-gradient(to right, #60a5fa, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 50px;
         }
         .projects-grid {
             display: grid;
@@ -87,36 +131,68 @@
             padding: 30px;
             border: 1px solid rgba(59, 130, 246, 0.2);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         .project-card:hover {
             transform: translateY(-5px);
             border-color: rgba(59, 130, 246, 0.5);
         }
+        .project-card.featured {
+            border-color: rgba(251, 191, 36, 0.4);
+            background: rgba(30, 41, 59, 0.95);
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            background: #fbbf24;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
         .project-card h3 {
             color: #60a5fa;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .project-meta {
+            color: #a855f7;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
         .project-card p {
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
         }
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
+            margin-top: auto;
         }
         .tech-tag {
             background: rgba(59, 130, 246, 0.2);
             color: #60a5fa;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
+        .project-link {
+            color: #a855f7;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .project-link:hover { text-decoration: underline; }
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -124,26 +200,61 @@
             background: rgba(30, 41, 59, 0.8);
             border-radius: 15px;
             padding: 30px;
-            text-align: center;
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
         .skill-category h3 {
             color: #fbbf24;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+        .skill-category p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        .achievements-list {
+            max-width: 850px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .achievement-item {
+            display: flex;
+            gap: 18px;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 12px;
+            padding: 20px 25px;
+            align-items: flex-start;
+        }
+        .achievement-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .achievement-item strong {
+            color: #fbbf24;
+        }
+        .achievement-item span {
+            color: #cbd5e1;
+            font-size: 0.95rem;
         }
         .contact {
             background: rgba(30, 41, 59, 0.5);
             text-align: center;
         }
+        .contact-details {
+            margin-bottom: 25px;
+            color: #cbd5e1;
+        }
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-top: 30px;
         }
         .social-links a {
             color: #60a5fa;
-            font-size: 1.2rem;
+            font-size: 1rem;
             text-decoration: none;
             padding: 10px 20px;
             border: 1px solid #60a5fa;
@@ -154,39 +265,65 @@
             background: #60a5fa;
             color: white;
         }
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
-            .hero h2 { font-size: 1.5rem; }
+            .hero h2 { font-size: 1.3rem; }
             .section { padding: 50px 0; }
+            nav ul { gap: 14px; }
+            nav a { font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="container">
+            <div class="logo">Darshan Kumar</div>
+            <ul>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Borimalla<br>Darshan Kumar</h1>
-            <h2>Computer Science Student | Full-Stack & ML Developer</h2>
-            <p>Driven Computer Science undergraduate with expertise in machine learning, full-stack development, and cloud technologies. Proven track record of building scalable solutions.</p>
+            <h1>Darshan Kumar<br>Borimalla</h1>
+            <h2>AI/ML Engineer · Full-Stack Developer · ICS Security Researcher</h2>
+            <p>Computer Science undergraduate building at the intersection of machine learning, industrial control system security, and full-stack products. Published IEEE researcher, hackathon builder, and a habitual shipper of end-to-end systems — from LSTM anomaly detectors to production SaaS starters.</p>
             <a href="#projects" class="btn">View My Work</a>
-            <a href="#contact" class="btn">Get In Touch</a>
+            <a href="#contact" class="btn outline">Get In Touch</a>
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- Experience & Education Section -->
     <section id="experience" class="section" style="background: rgba(30, 41, 59, 0.3);">
         <div class="container">
             <h2>Experience & Education</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>Software Development Intern</h3>
-                    <p style="color: #60a5fa; margin-bottom: 10px;">FinTech-Oriented Systems | Apr 2025 – Jun 2025</p>
-                    <p>Designed and implemented RESTful backend services for trading workflows and portfolio management. Applied OOP principles and clean code practices in an agile team environment.</p>
+                    <p class="project-meta">FinTech-Oriented Systems · Apr – Jun 2025</p>
+                    <p>Designed and implemented RESTful backend services for trading workflows and portfolio management. Applied OOP principles and clean code practices in an agile team environment, collaborating cross-functionally and iterating rapidly across sprint cycles.</p>
                 </div>
                 <div class="project-card">
-                    <h3>B.Tech Computer Science and Engineering</h3>
-                    <p style="color: #60a5fa; margin-bottom: 10px;">Amrita Vishwa Vidyapeetham | 2022 – 2026</p>
-                    <p>CGPA: 7.8 / 10.0. Coursework focusing on Data Structures, Algorithms, OOP, Machine Learning, and Cloud Computing.</p>
+                    <h3>B.Tech, Computer Science & Engineering</h3>
+                    <p class="project-meta">Amrita Vishwa Vidyapeetham, Amritapuri · 2022 – 2026</p>
+                    <p>CGPA: 7.8 / 10.0. Coursework in Data Structures & Algorithms, OOP, Machine Learning, Cloud Computing, and System Design fundamentals.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Intermediate (Class 11–12)</h3>
+                    <p class="project-meta">Sri Chaitanya Junior College · 2019 – 2021</p>
+                    <p>Scored 98%, building the analytical and mathematical foundation that carried into an engineering degree focused on ML and systems.</p>
                 </div>
             </div>
         </div>
@@ -196,184 +333,246 @@
     <section id="projects" class="section">
         <div class="container">
             <h2>Featured Projects</h2>
+            <p class="section-subtitle">A mix of published research, hackathon builds, and full-stack products — spanning ICS security, LLM applications, and FinTech.</p>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card featured">
+                    <span class="badge">IEEE Published</span>
+                    <h3>ICS Malware Detection — Hybrid SARIMA-LSTM</h3>
+                    <p class="project-meta">Cybersecurity · ICS Security · Machine Learning</p>
+                    <p>Anomaly detection for industrial control systems using sensor data rather than network traffic. Fuses a SARIMA statistical model (seasonal/cyclic patterns) with an LSTM Autoencoder trained on normal behavior — attacks surface as high reconstruction error. Trained and validated on the SWaT and HAI datasets. Extended into the published paper "Interpretable Malware Detection Using a Self-Attention Augmented 1D CNN" (ICCCNT 2025, IIT Indore).</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch / TensorFlow</span>
+                        <span class="tech-tag">SARIMA (statsmodels)</span>
+                        <span class="tech-tag">LSTM Autoencoder</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/Industrial-Control-System-Malware-Detection-via-Sensor-Data-Anomalies" target="_blank">View repo →</a>
+                </div>
+
+                <div class="project-card featured">
+                    <span class="badge">Live · HackRx 6.0</span>
                     <h3>Parsely AI</h3>
-                    <p>Gemini-powered document processing platform using LLMs for intelligent claim evaluation and semantic search across unstructured documents like contracts and policies.</p>
+                    <p class="project-meta">AI/ML · NLP · Backend · Cloud</p>
+                    <p>Gemini-powered document processing platform for automated insurance claim evaluation. A 6-stage pipeline — multi-format extraction → spaCy NER preprocessing → Gemini entity/intent parsing → FAISS hybrid semantic+keyword retrieval → Gemini structured claim decisioning — returning JSON verdicts with confidence scores. Built for HackRx 6.0; Gemini Flash brings ~90% lower inference cost than GPT-4.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">Gemini AI</span>
-                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">Gemini 1.5 Pro/Flash</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">Docker + Railway</span>
                     </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/Parsely-AI" target="_blank">View repo →</a>
                 </div>
-                
+
                 <div class="project-card">
-                    <h3>AI-Enhanced Forest Monitoring</h3>
-                    <p>Cloud-based real-time monitoring system using Google Earth Engine, Vertex AI, and BigQuery. Deployed anomaly detection algorithms for deforestation pattern identification.</p>
+                    <h3>Digital-Twin AI Job Agent</h3>
+                    <p class="project-meta">Agentic AI · LLM · Automation</p>
+                    <p>Autonomous agent that searches job listings, tailors applications to each posting, and manages the end-to-end job hunt workflow using LLM APIs and agentic frameworks.</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">Google Earth Engine</span>
-                        <span class="tech-tag">Vertex AI</span>
-                        <span class="tech-tag">BigQuery</span>
                         <span class="tech-tag">Python</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>Interpretable Malware Detection</h3>
-                    <p>Self-attention-augmented 1D CNN using TensorFlow and Keras achieving 92% accuracy in Android malware detection. Published at ICCCNT 2025, IIT Indore.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Keras</span>
-                        <span class="tech-tag">CNN</span>
-                        <span class="tech-tag">Cybersecurity</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>Capital-View</h3>
-                    <p>Full-stack stock trading platform with real-time market data (Alpha Vantage API), portfolio analytics, and IPO calendar with JWT authentication.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">FinTech</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>payFrame SaaS Starter</h3>
-                    <p>Production-ready SaaS starter template with authentication, Stripe subscription billing, and admin dashboard built on Next.js 16 App Router.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Next.js 16</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Stripe</span>
-                        <span class="tech-tag">Prisma</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>MindfulAI</h3>
-                    <p>AI mental health platform featuring sentiment analysis, 24/7 therapeutic chatbot, and mood tracking dashboards. Built with real-time sockets and Hugging Face.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Socket.io</span>
-                        <span class="tech-tag">Hugging Face</span>
-                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">LLM APIs</span>
+                        <span class="tech-tag">Agentic AI</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>StumpScore</h3>
-                    <p>Live cricket platform with real-time score updates, Razorpay payment gateway integration, and MongoDB caching, optimized for 1,000+ concurrent users.</p>
+                    <h3>Forest Monitoring System</h3>
+                    <p class="project-meta">Cloud · Machine Learning · GCP</p>
+                    <p>Environmental monitoring system processing satellite and sensor data on Google Cloud, with anomaly detection tuned for deforestation pattern identification.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Google Cloud Platform</span>
+                        <span class="tech-tag">Vertex AI</span>
+                        <span class="tech-tag">BigQuery</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Capital-View</h3>
+                    <p class="project-meta">FinTech · Full-Stack · MERN</p>
+                    <p>Full-stack stock trading platform with real-time market data via Alpha Vantage, portfolio analytics, an IPO calendar, and live notifications. JWT auth uses HTTP-only cookies with refresh tokens. Built with Amazon Kiro's spec-driven workflow.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Node.js / Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/Capital-View" target="_blank">View repo →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>StumpScore — Live Cricket Platform</h3>
+                    <p class="project-meta">Full-Stack · Real-Time · FinTech</p>
+                    <p>Live cricket scoring platform with WebSocket-driven real-time updates and full Razorpay payment integration (order creation, client-side modal, webhook verification). Redis caching plus MongoDB indexing keep it responsive at 1,000+ concurrent users.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React.js</span>
                         <span class="tech-tag">WebSockets</span>
+                        <span class="tech-tag">Redis</span>
                         <span class="tech-tag">Razorpay</span>
                     </div>
                 </div>
-                
+
                 <div class="project-card">
-                    <h3>SimPay</h3>
-                    <p>Mobile payment dashboard app with transaction filtering, real-time updates, and JWT auth. Built with a NestJS backend and PostgreSQL database.</p>
+                    <h3>MindfulAI</h3>
+                    <p class="project-meta">AI/ML · Full-Stack · Healthcare</p>
+                    <p>AI mental health platform combining sentiment-analysis mood journaling, a 24/7 therapeutic chatbot, Chart.js dashboards, auto-generated weekly summaries, and crisis-pattern detection. Deployed on Netlify + Railway.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React.js / Socket.io</span>
+                        <span class="tech-tag">Hugging Face</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">MongoDB Atlas</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/mindfulai" target="_blank">View repo →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>SimPay — Mobile Payment Dashboard</h3>
+                    <p class="project-meta">FinTech · Mobile · Full-Stack</p>
+                    <p>React Native (Expo) payment dashboard backed by a NestJS + PostgreSQL API. Supports transaction filtering, payment simulation, RBAC-based admin management, CSV export, and real-time WebSocket updates.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">React Native</span>
                         <span class="tech-tag">NestJS</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">PostgreSQL / TypeORM</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/simpay" target="_blank">View repo →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Ocular Disease Recognition</h3>
+                    <p class="project-meta">Deep Learning · Medical AI · Computer Vision</p>
+                    <p>MobileNetV2-based classifier over the ODIR-5K dataset (10K fundus images, 8 disease classes). Two-phase training — frozen base, then fine-tuned from layer 100 — with class-weighted balancing for imbalanced classes.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">TensorFlow / Keras</span>
+                        <span class="tech-tag">MobileNetV2</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>StudentDev — Android Productivity App</h3>
+                    <p class="project-meta">Android · Mobile</p>
+                    <p>Five-module student productivity app — notes with PDF viewer, attendance tracker, habits & todo, budget manager, and a dark-themed settings module — built on MVVM with a 5-entity Room database.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Jetpack Compose</span>
+                        <span class="tech-tag">Room DB</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Credit Risk Dashboard</h3>
+                    <p class="project-meta">Machine Learning · FinTech · Data Science</p>
+                    <p>Interactive lender dashboard for credit risk assessment, built on synthetic data generation and a Gradient Boosting classifier for the Poonawalla Fincorp Hackathon.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Gradient Boosting</span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3>Lightweight CRM</h3>
-                    <p>Contact management system with tag filtering and activity timeline. Deployed via Docker with a Next.js 14 App Router and Prisma ORM backend.</p>
+                    <p class="project-meta">Full-Stack · Web · Sales Tools</p>
+                    <p>Contact management system with tag filtering (color-coded, with counts) and an activity timeline for notes, calls, meetings, and WhatsApp entries. Docker-ready with docker-compose for production deployment.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Next.js 14</span>
-                        <span class="tech-tag">Prisma</span>
-                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Prisma / SQLite</span>
                         <span class="tech-tag">Docker</span>
                     </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/CRM" target="_blank">View repo →</a>
                 </div>
-                
-                <div class="project-card">
-                    <h3>Digital-Twin AI Job Agent</h3>
-                    <p>Autonomous agent that searches job listings, tailors applications, and manages job hunt workflows using LLM APIs and agentic frameworks.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LLM APIs</span>
-                        <span class="tech-tag">Agentic AI</span>
-                        <span class="tech-tag">Automation</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>Ocular Disease Recognition</h3>
-                    <p>Deep learning medical AI using MobileNetV2 pretrained model to classify 8 eye diseases from fundus images, handling class imbalance.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Keras</span>
-                        <span class="tech-tag">MobileNetV2</span>
-                        <span class="tech-tag">Computer Vision</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>StudentDev</h3>
-                    <p>Android productivity app featuring PDF viewer, attendance tracker, and budget manager built with MVVM architecture and Room database.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Kotlin</span>
-                        <span class="tech-tag">Jetpack Compose</span>
-                        <span class="tech-tag">Room DB</span>
-                        <span class="tech-tag">Android</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3>Credit Risk Dashboard</h3>
-                    <p>Interactive lender dashboard for credit risk assessment utilizing synthetic data generation and Gradient Boosting classifier (Poonawalla Fincorp Hackathon).</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">FinTech</span>
-                    </div>
-                </div>
-                
+
                 <div class="project-card">
                     <h3>ValetDesk Mobile App</h3>
-                    <p>Cross-platform mobile application utilizing React Native and Expo SDK, connected to a Python Flask backend for dynamic data retrieval.</p>
+                    <p class="project-meta">Mobile · Full-Stack · Assignment</p>
+                    <p>Cross-platform screening assignment: React Native + Expo SDK 54 frontend with List/Detail/Create screens, talking to a Flask backend with platform-specific API routing.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">Expo</span>
+                        <span class="tech-tag">Expo SDK 54</span>
                         <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">TypeScript</span>
                     </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/mobile-app" target="_blank">View repo →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>payFrame — SaaS Subscription Starter</h3>
+                    <p class="project-meta">FinTech/SaaS · Auth & Billing Infrastructure</p>
+                    <p>Production-ready SaaS starter with Auth.js v5 (magic links + Google OAuth) and full Stripe subscription billing — Checkout, Customer Portal, and webhook-driven subscription events — plus an admin dashboard tracking active subscribers and estimated MRR.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js 16</span>
+                        <span class="tech-tag">Auth.js v5</span>
+                        <span class="tech-tag">Stripe</span>
+                        <span class="tech-tag">Prisma</span>
+                    </div>
+                    <a class="project-link" href="https://github.com/darshhannnn/payFrame" target="_blank">View repo →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="skills" class="section" style="background: rgba(30, 41, 59, 0.3);">
         <div class="container">
             <h2>Skills & Technologies</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Frontend</h3>
-                    <p>React.js, Next.js, React Native, TypeScript, Tailwind CSS, Material 3, Jetpack Compose</p>
+                    <p>React.js, Angular, React Native (Expo), TypeScript, JavaScript (ES6+), HTML5/CSS3, Tailwind CSS, Chart.js, Socket.io, Jetpack Compose, Material 3</p>
                 </div>
                 <div class="skill-category">
                     <h3>Backend & APIs</h3>
-                    <p>Node.js, Express, NestJS, FastAPI, REST APIs, WebSockets, Prisma ORM, Auth.js</p>
+                    <p>Node.js, Express, NestJS, Flask, FastAPI, Next.js (App Router), REST APIs, WebSockets, JWT, Auth.js, Redis, Stripe, Prisma ORM</p>
                 </div>
                 <div class="skill-category">
-                    <h3>AI & Machine Learning</h3>
-                    <p>Python, TensorFlow, PyTorch, Scikit-learn, FAISS, OpenAI API, Gemini API, Hugging Face</p>
+                    <h3>AI / ML / Data</h3>
+                    <p>Python, TensorFlow/Keras, PyTorch, scikit-learn, SARIMA (statsmodels), LSTM Autoencoders, MobileNetV2, FAISS, sentence-transformers, Hugging Face, OpenAI & Gemini APIs, spaCy, NLTK, pandas, NumPy, OpenCV</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Cloud & Databases</h3>
-                    <p>MongoDB, PostgreSQL, SQLite, GCP, Docker, Vertex AI, Git</p>
+                    <h3>Databases</h3>
+                    <p>MongoDB, PostgreSQL, BigQuery, SQL, SQLite, Room DB, TypeORM</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <p>GCP, Vertex AI, AWS (basic), Docker, Git/GitHub, Netlify, Railway, Render, Fly.io, Vercel, ngrok</p>
+                </div>
+                <div class="skill-category">
+                    <h3>CS Fundamentals & Languages</h3>
+                    <p>Data Structures & Algorithms, OOP, System Design basics, MVVM, Agile/Scrum, C++, Java, Python, SQL — active on HackerRank and LeetCode</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2>Achievements & Publications</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <span class="achievement-icon">📄</span>
+                    <div><strong>IEEE Published — ICCCNT 2025, IIT Indore.</strong><span> "Interpretable Malware Detection Using a Self-Attention Augmented 1D CNN" — primary publication.</span></div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">📄</span>
+                    <div><strong>Published — CICN 2025, NIT Goa.</strong><span> "Behavior-Aware Influence Maximization using Genetic Algorithms on Instagram Social Graph" — graph modeling and algorithmic analysis.</span></div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">🏆</span>
+                    <div><strong>HackerRank Orchestrate, June 2026.</strong><span> Ranked #826 of 1,773 for building and deploying an AI agent.</span></div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">🚀</span>
+                    <div><strong>HackRx 6.0 participant.</strong><span> Shipped the Parsely AI submission — a deployed, Gemini-powered claim evaluation pipeline.</span></div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">✈️</span>
+                    <div><strong>AeroHack participant.</strong><span> </span></div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">💻</span>
+                    <div><strong>27+ public repositories</strong><span> on GitHub spanning ML, full-stack, and mobile projects.</span></div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-icon">🎓</span>
+                    <div><strong>98% in Intermediate (Class 11–12)</strong><span> — Sri Chaitanya Junior College.</span></div>
                 </div>
             </div>
         </div>
@@ -384,7 +583,7 @@
         <div class="container">
             <h2>Let's Work Together</h2>
             <p style="font-size: 1.2rem; margin-bottom: 30px;">Ready to bring your ideas to life? I'm always excited to discuss new opportunities and interesting projects.</p>
-            <p style="margin-bottom: 30px;">📧 darshankumarb3@gmail.com | 📱 +91 8919527353 | 📍 Hyderabad, India</p>
+            <p class="contact-details">📧 darshankumarb3@gmail.com &nbsp;|&nbsp; 📱 +91 8919527353 &nbsp;|&nbsp; 📍 Hyderabad, India</p>
             <div class="social-links">
                 <a href="https://linkedin.com/in/darshan-borimalla" target="_blank">LinkedIn</a>
                 <a href="https://github.com/darshhannnn" target="_blank">GitHub</a>
@@ -392,6 +591,10 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        &copy; 2026 Darshan Kumar Borimalla. Built with curiosity and a lot of coffee.
+    </footer>
 
     <script>
         // Smooth scrolling for navigation links
